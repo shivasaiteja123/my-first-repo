@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="ProjectConfig" table="`projectconfig`" lazy="true" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="PSId" column="psid" type="long">
+      <generator class="native"></generator>
+    </id>
+	<property name="ProjId">
+      <column name="projid" sql-type="long" not-null="true" unique="true" />
+    </property>
+	
+	<property name="HostSettings">
+		<column name="hostsettings" sql-type="varchar(5000)" not-null="false" />
+	</property>
+  <property name="Deploymentdetails">
+			<column name="DeploymentDetails" sql-type="varchar(5000)" not-null="false" />
+		</property>
+  </class>
+</hibernate-mapping>
+
+

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="User" table="users" lazy="true" dynamic-update="true" >
+		<cache usage="read-write"/>
+		<id name="UId" column="uid" type="long">
+			<generator class="native"></generator>
+		</id>
+    
+	<property name="AccountId">
+      <column name="acctid" sql-type="long" not-null="false" />
+    </property>
+	<property name="RoleId">
+      <column name="roleid" sql-type="long" not-null="false" />
+    </property>
+    <property name="UserId">
+		  <column name="userid" sql-type="string" not-null="false" />
+	</property>
+	<property name="Password">
+	  <column name="password" sql-type="string" not-null="false" />
+	</property>
+	<property name="FullName">
+	  <column name="fullname" sql-type="string" not-null="false" />
+	</property>
+	<property name="Designation">
+	  <column name="designation" sql-type="string" not-null="false" />
+	</property>
+	<property name="Phone">
+	  <column name="phone" sql-type="string" not-null="false" />
+	</property>
+	<property name="Mobile">
+	  <column name="mobile" sql-type="string" not-null="false" />
+	</property>
+	<property name="Status">
+	  <column name="status" sql-type="string" not-null="false" />
+	</property>
+	<property name="CreatedBy">
+	  <column name="who_created" sql-type="long" not-null="false" />
+	</property>
+	<property name="CreatedOn">
+	  <column name="datecreated" sql-type="timestamp" not-null="false" />
+	</property>
+	<property name="EditedBy">
+	  <column name="who_edited" sql-type="long" not-null="false" />
+	</property>
+	<property name="EditedOn">
+	  <column name="dateedited" sql-type="datetime" not-null="false" />
+	</property>
+		     
+  </class>  
+</hibernate-mapping>

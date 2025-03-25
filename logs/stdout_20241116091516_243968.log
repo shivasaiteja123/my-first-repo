@@ -1,0 +1,15 @@
+2024-11-16 14:45:17,440 [9] INFO  - Enter SubscribeAsync
+2024-11-16 14:45:17,555 [9] INFO  - Configured BootstrapServers : localhost:9092
+2024-11-16 14:45:17,674 [9] INFO  - Subscribing Topics : ProjectCreated,SA_RealeasedProject
+2024-11-16 14:45:17,676 [9] INFO  - Starting Consumer Daemon...
+2024-11-16 14:45:17,676 [9] INFO  - Listining for Messages...
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: F:\aiscipro-demo\dc.aiscipro.com
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="DeployConfig" table="`deployconfig`" lazy="true" dynamic-update="true" >
+	<cache usage="read-write"/>
+    
+    <id name="DeployId" column="DeployId" type="long" generator="assigned">
+      <generator class="native"></generator>
+    </id>
+    <property name="PId">
+      <column name="PId" sql-type="long" not-null="true" />
+    </property>
+    <property name="AcctId">
+      <column name="AcctId" sql-type="long" not-null="true" />
+    </property>
+    <property name="CloudType">
+      <column name="CloudType" sql-type="varchar(45)" not-null="true" />
+    </property>  
+    
+    <property name="DeployUrl">
+      <column name="DeployUrl" sql-type="varchar(45)" not-null="false" />
+    </property>
+	  
+    <property name="DeployPort">
+      <column name="DeployPort" sql-type="varchar(45)" not-null="false" />
+    </property>
+		
+    
+  </class>
+</hibernate-mapping>

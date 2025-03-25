@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="Project" table="`projects`" lazy="true" dynamic-update="true" >
+	<cache usage="read-write"/>
+    <id name="PId" column="pid" type="long" generator="assigned">
+      <generator class="native" />
+    </id>
+    <property name="AccountId">
+      <column name="acctid" sql-type="long" not-null="true" />
+    </property>
+    <property name="ProjectName">
+      <column name="project_name" sql-type="varchar(450)" not-null="true" />
+    </property>  
+    <property name="ProjectCode">
+      <column name="project_code" sql-type="varchar(45)" not-null="true" />
+    </property>
+    <property name="ProjectDesc">
+      <column name="project_desc" sql-type="varchar(45)" not-null="false" />
+    </property>
+	  <property name="CreatedOn">
+		  <column name="datecreated" sql-type="timestamp" not-null="false" />
+	  </property>
+    <property name="Status">
+      <column name="`status`" sql-type="int(11)" not-null="false" />
+    </property>
+		<property name="Package_File">
+			<column name="Package_File" sql-type="varchar(700)" not-null="false" />
+		</property>
+		<property name="UserEmail">
+      <column name="user_email" sql-type="varchar(450)" not-null="false" />
+    </property>  
+		<property name="Password">
+      <column name="password" sql-type="varchar(450)" not-null="false" />
+    </property>
+   
+
+    
+  </class>
+</hibernate-mapping>

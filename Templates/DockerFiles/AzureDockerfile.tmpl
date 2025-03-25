@@ -1,0 +1,10 @@
+﻿FROM sonance.azurecr.io/sonancehost:v1
+
+WORKDIR /
+
+# Copy Product
+COPY <ProjectCode>/. ./inetpub/wwwroot/
+
+EXPOSE 80
+
+ENTRYPOINT ["C:\\ServiceMonitor.exe", "w3svc"]

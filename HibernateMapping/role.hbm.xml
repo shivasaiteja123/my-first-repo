@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="Role" table="roles" lazy="true" dynamic-update="true" >
+        <cache usage="read-write"/>
+        <id name="RId" column="rid" type="long">
+            <generator class="native"></generator>
+        </id>
+		<property name="RoleName">
+		  <column name="role" sql-type="string" not-null="false" />
+		</property>
+		<property name="RoleDesc">
+		  <column name="role_desc" sql-type="string" not-null="false" />
+		</property>
+		<property name="Status">
+		  <column name="status" sql-type="int(11)" not-null="false" />
+		</property>
+        
+    </class>
+</hibernate-mapping>

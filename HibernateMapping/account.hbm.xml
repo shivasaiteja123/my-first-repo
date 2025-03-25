@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Sonance.Models" namespace="Sonance.Models.DataAccess" xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+	<class name="Account" table="accounts" lazy="true" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="Aid" column="aid" type="long">
+      <generator class="native"></generator>
+    </id>
+	
+	<property name="EmailId">
+      <column name="emailid" sql-type="string" not-null="true" />
+    </property>
+	
+	<property name="CompanyName">
+      <column name="company_name" sql-type="string" not-null="false" />
+    </property>
+	<property name="CompanyCategory">
+      <column name="company_category" sql-type="int" not-null="false" />
+    </property>
+	<property name="CompanySize">
+      <column name="company_size" sql-type="string" not-null="false" />
+    </property>
+	<property name="Country">
+      <column name="country" sql-type="int" not-null="false" />
+    </property>
+	<property name="State">
+      <column name="state" sql-type="int" not-null="false" />
+    </property>
+	<property name="Phone">
+      <column name="phone" sql-type="string" not-null="false" />
+    </property>
+	<property name="Mobile">
+      <column name="mobile" sql-type="string" not-null="false" />
+    </property>
+	<property name="Status">
+      <column name="status" sql-type="int" not-null="false" />
+    </property>
+	<property name="DateCreated">
+      <column name="datecreated" sql-type="timestamp" not-null="false" />
+    </property>
+        
+  </class>
+</hibernate-mapping>

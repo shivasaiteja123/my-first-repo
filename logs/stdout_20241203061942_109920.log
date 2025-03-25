@@ -1,0 +1,1229 @@
+2024-12-03 11:49:44,112 [9] INFO  - Enter SubscribeAsync
+2024-12-03 11:49:44,236 [9] INFO  - Configured BootstrapServers : localhost:9092
+2024-12-03 11:49:44,340 [9] INFO  - Subscribing Topics : ProjectCreated,SA_RealeasedProject
+2024-12-03 11:49:44,343 [9] INFO  - Starting Consumer Daemon...
+2024-12-03 11:49:44,343 [9] INFO  - Listining for Messages...
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: F:\aiscipro-demo\dc.aiscipro.com
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+2024-12-03 11:50:48,931 [9] INFO  - Received Messages : {"topic":"ProjectCreated","data":"{\"Pid\":6765,\"AccountId\":1,\"ProjectName\":\"bvbb@BPAI\",\"ProjectCode\":\"dxslmv\",\"ProjectDesc\":\"\",\"Status\":\"1\",\"CreatedOn\":\"2024-12-03T11:50:47.7944898+05:30\"}","Offset":{"Topic":"ProjectCreated","Partition":{"Value":0,"IsSpecial":false},"Offset":{"Value":12,"IsSpecial":false},"TopicPartition":{"Topic":"ProjectCreated","Partition":{"Value":0,"IsSpecial":false}}}}
+2024-12-03 11:50:48,933 [9] INFO  - OnMessageReceived Entered.
+2024-12-03 11:50:48,936 [9] INFO  - Enter ProcessData
+2024-12-03 11:50:49,010 [9] DEBUG - Data Received, Topic : ProjectCreated, Data : {"Pid":6765,"AccountId":1,"ProjectName":"bvbb@BPAI","ProjectCode":"dxslmv","ProjectDesc":"","Status":"1","CreatedOn":"2024-12-03T11:50:47.7944898+05:30"}
+2024-12-03 11:50:49,010 [9] INFO  - Find Topic in jsonModel.ProcessTopicsData
+2024-12-03 11:50:49,010 [9] DEBUG - Found Topic : ProjectCreated
+2024-12-03 11:50:49,011 [9] INFO  - Parsing Data to JObject
+2024-12-03 11:50:49,013 [9] INFO  - Parsing Data to JObject Success
+2024-12-03 11:50:49,013 [9] INFO  - Loading DLL from Config
+2024-12-03 11:50:49,013 [9] INFO  - Creating Class Instance
+2024-12-03 11:50:49,014 [9] INFO  - Calling Method
+2024-12-03 11:50:49,240 [9] INFO  - NHibernate 5.3.5+5ec48216cbd9093f19b0b8aa5653aa6f007ed72e (assembly 5.3.0.0)
+2024-12-03 11:50:49,249 [9] INFO  - hibernate-configuration section not found in application configuration file
+2024-12-03 11:50:49,250 [9] INFO  - Bytecode provider name : lcg
+2024-12-03 11:50:49,251 [9] INFO  - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-12-03 11:50:49,251 [9] INFO  - Using reflection optimizer
+2024-12-03 11:50:49,289 [9] DEBUG - connection.provider=NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:50:49,289 [9] DEBUG - connection.driver_class=NHibernate.Driver.MySqlDataDriver
+2024-12-03 11:50:49,290 [9] DEBUG - connection.connection_string=Server=localhost;Database=dc_service;User ID=root;Password=root;
+2024-12-03 11:50:49,290 [9] DEBUG - dialect=NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:50:49,290 [9] DEBUG - show_sql=true
+2024-12-03 11:50:49,290 [9] DEBUG - <-Sonance.DataAccess
+2024-12-03 11:50:49,290 [9] INFO  - Searching for mapped documents in assembly: Sonance.DataAccess
+2024-12-03 11:50:49,318 [9] WARN  - No mapped documents found in assembly: Sonance.DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2024-12-03 11:50:49,318 [9] DEBUG - properties: System.Collections.Generic.Dictionary`2[System.String,System.String]
+2024-12-03 11:50:49,319 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/project.hbm.xml
+2024-12-03 11:50:49,551 [9] INFO  - Mapping class: Sonance.Models.DataAccess.Project -> projects
+2024-12-03 11:50:49,573 [9] DEBUG - Mapped property: PId -> pid, type: Int64
+2024-12-03 11:50:49,586 [9] DEBUG - Mapped property: AccountId -> acctid, type: Int64
+2024-12-03 11:50:49,587 [9] DEBUG - Mapped property: ProjectName -> project_name, type: String
+2024-12-03 11:50:49,587 [9] DEBUG - Mapped property: ProjectCode -> project_code, type: String
+2024-12-03 11:50:49,587 [9] DEBUG - Mapped property: ProjectDesc -> project_desc, type: String
+2024-12-03 11:50:49,587 [9] DEBUG - Mapped property: CreatedOn -> datecreated, type: DateTime
+2024-12-03 11:50:49,587 [9] DEBUG - Mapped property: Status -> status, type: Int32
+2024-12-03 11:50:49,588 [9] DEBUG - Mapped property: Package_File -> Package_File, type: String
+2024-12-03 11:50:49,588 [9] DEBUG - Mapped property: UserEmail -> user_email, type: String
+2024-12-03 11:50:49,588 [9] DEBUG - Mapped property: Password -> password, type: String
+2024-12-03 11:50:49,592 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/projectconfig.hbm.xml
+2024-12-03 11:50:49,593 [9] INFO  - Mapping class: Sonance.Models.DataAccess.ProjectConfig -> projectconfig
+2024-12-03 11:50:49,593 [9] DEBUG - Mapped property: PSId -> psid, type: Int64
+2024-12-03 11:50:49,593 [9] DEBUG - Mapped property: ProjId -> projid, type: Int64
+2024-12-03 11:50:49,594 [9] DEBUG - Mapped property: HostSettings -> hostsettings, type: String
+2024-12-03 11:50:49,594 [9] DEBUG - Mapped property: Deploymentdetails -> DeploymentDetails, type: String
+2024-12-03 11:50:49,594 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/deployconfig.hbm.xml
+2024-12-03 11:50:49,595 [9] INFO  - Mapping class: Sonance.Models.DataAccess.DeployConfig -> deployconfig
+2024-12-03 11:50:49,595 [9] DEBUG - Mapped property: DeployId -> DeployId, type: Int64
+2024-12-03 11:50:49,595 [9] DEBUG - Mapped property: PId -> PId, type: Int64
+2024-12-03 11:50:49,595 [9] DEBUG - Mapped property: AcctId -> AcctId, type: Int64
+2024-12-03 11:50:49,595 [9] DEBUG - Mapped property: CloudType -> CloudType, type: String
+2024-12-03 11:50:49,596 [9] DEBUG - Mapped property: DeployUrl -> DeployUrl, type: String
+2024-12-03 11:50:49,596 [9] DEBUG - Mapped property: DeployPort -> DeployPort, type: String
+2024-12-03 11:50:49,600 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:50:49,610 [9] INFO  - checking mappings queue
+2024-12-03 11:50:49,610 [9] INFO  - processing one-to-many association mappings
+2024-12-03 11:50:49,611 [9] INFO  - processing one-to-one association property references
+2024-12-03 11:50:49,611 [9] INFO  - processing foreign key constraints
+2024-12-03 11:50:49,612 [9] INFO  - processing filters (second pass)
+2024-12-03 11:50:49,622 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:50:49,781 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:50:49,806 [9] INFO  - Using dialect defined converter
+2024-12-03 11:50:49,807 [9] INFO  - Generate SQL with comments: disabled
+2024-12-03 11:50:49,807 [9] INFO  - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:50:49,808 [9] INFO  - Configuring ConnectionProvider
+2024-12-03 11:50:49,971 [9] INFO  - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-12-03 11:50:49,972 [9] INFO  - Optimize cache for minimal puts: False
+2024-12-03 11:50:49,972 [9] INFO  - Connection release mode: auto
+2024-12-03 11:50:49,972 [9] INFO  - Default batch fetch size: 1
+2024-12-03 11:50:49,972 [9] INFO  - echoing all SQL to stdout
+2024-12-03 11:50:49,973 [9] INFO  - Statistics: disabled
+2024-12-03 11:50:49,973 [9] INFO  - Deleted entity synthetic identifier rollback: disabled
+2024-12-03 11:50:49,973 [9] INFO  - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-12-03 11:50:49,974 [9] INFO  - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-12-03 11:50:49,975 [9] INFO  - Query language substitutions: {}
+2024-12-03 11:50:49,975 [9] INFO  - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:50:49,975 [9] INFO  - Order SQL inserts for batching: disabled
+2024-12-03 11:50:49,976 [9] INFO  - Order SQL updates for batching: disabled
+2024-12-03 11:50:49,976 [9] DEBUG - Wrap result sets: disabled
+2024-12-03 11:50:49,976 [9] DEBUG - Batch versioned data: disabled
+2024-12-03 11:50:49,976 [9] INFO  - Batcher factory: NHibernate.AdoNet.NonBatchingBatcherFactory, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:50:49,977 [9] INFO  - Default flush mode: Auto
+2024-12-03 11:50:49,977 [9] INFO  - Named query checking : enabled
+2024-12-03 11:50:49,977 [9] DEBUG - Track session id: enabled
+2024-12-03 11:50:49,987 [9] INFO  - building session factory
+2024-12-03 11:50:49,987 [9] DEBUG - Session factory constructed with filter configurations : {}
+2024-12-03 11:50:49,988 [9] DEBUG - instantiating session factory with properties: {'use_reflection_optimizer'='True', 'connection.provider'='NHibernate.Connection.DriverConnectionProvider', 'connection.driver_class'='NHibernate.Driver.MySqlDataDriver', 'connection.connection_string'='Server=localhost;Database=dc_service;User ID=root;Password=root;', 'dialect'='NHibernate.Dialect.MySQL5Dialect', 'show_sql'='true'}
+2024-12-03 11:50:49,989 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:50:50,365 [9] DEBUG - Closing connection
+2024-12-03 11:50:50,368 [9] DEBUG - initializing class SessionFactoryObjectFactory
+2024-12-03 11:50:50,368 [9] DEBUG - registered: 49b4dbd8d6194eadaff5f33bdcd614f5(unnamed)
+2024-12-03 11:50:50,368 [9] INFO  - no name configured
+2024-12-03 11:50:50,376 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:50:50,376 [9] DEBUG - cache for: Sonance.Models.DataAccess.Project usage strategy: read-write
+2024-12-03 11:50:50,442 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:50:50,452 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.Project
+2024-12-03 11:50:50,467 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:50:50,467 [9] DEBUG - cache for: Sonance.Models.DataAccess.ProjectConfig usage strategy: read-write
+2024-12-03 11:50:50,468 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:50:50,468 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:50:50,468 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:50:50,468 [9] DEBUG - cache for: Sonance.Models.DataAccess.DeployConfig usage strategy: read-write
+2024-12-03 11:50:50,469 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:50:50,469 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:50:50,498 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:50:50,498 [9] DEBUG -  Version select: SELECT pid FROM `projects` WHERE pid = ?
+2024-12-03 11:50:50,498 [9] DEBUG -  Snapshot select: SELECT project_.pid, project_.acctid as acctid2_0_, project_.project_name as project3_0_, project_.project_code as project4_0_, project_.project_desc as project5_0_, project_.datecreated as datecreated6_0_, project_.`status` as status7_0_, project_.Package_File as package8_0_, project_.user_email as user9_0_, project_.password as password10_0_ FROM `projects` project_ WHERE project_.pid=?
+2024-12-03 11:50:50,498 [9] DEBUG -  Insert 0: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:50:50,498 [9] DEBUG -  Update 0: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:50:50,499 [9] DEBUG -  Delete 0: DELETE FROM `projects` WHERE pid = ?
+2024-12-03 11:50:50,519 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:50:50,519 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:50:50,519 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:50:50,519 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:50:50,519 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:50:50,520 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:50:50,521 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:50:50,522 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:50:50,523 [9] DEBUG -  Version select: SELECT psid FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:50:50,523 [9] DEBUG -  Snapshot select: SELECT projectcon_.psid, projectcon_.projid as projid2_1_, projectcon_.hostsettings as hostsettings3_1_, projectcon_.DeploymentDetails as deploymentdetails4_1_ FROM `projectconfig` projectcon_ WHERE projectcon_.psid=?
+2024-12-03 11:50:50,523 [9] DEBUG -  Insert 0: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails, psid) VALUES (?, ?, ?, ?)
+2024-12-03 11:50:50,523 [9] DEBUG -  Update 0: UPDATE `projectconfig` SET projid = ?, hostsettings = ?, DeploymentDetails = ? WHERE psid = ?
+2024-12-03 11:50:50,523 [9] DEBUG -  Delete 0: DELETE FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:50:50,523 [9] DEBUG -  Identity insert: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails) VALUES (?, ?, ?);SELECT LAST_INSERT_ID()
+2024-12-03 11:50:50,523 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:50:50,524 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:50:50,525 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:50:50,525 [9] DEBUG -  Version select: SELECT DeployId FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:50:50,525 [9] DEBUG -  Snapshot select: SELECT deployconf_.DeployId, deployconf_.PId as pid2_2_, deployconf_.AcctId as acctid3_2_, deployconf_.CloudType as cloudtype4_2_, deployconf_.DeployUrl as deployurl5_2_, deployconf_.DeployPort as deployport6_2_ FROM `deployconfig` deployconf_ WHERE deployconf_.DeployId=?
+2024-12-03 11:50:50,525 [9] DEBUG -  Insert 0: INSERT INTO `deployconfig` (PId, AcctId, CloudType, DeployUrl, DeployPort, DeployId) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-03 11:50:50,525 [9] DEBUG -  Update 0: UPDATE `deployconfig` SET PId = ?, AcctId = ?, CloudType = ?, DeployUrl = ?, DeployPort = ? WHERE DeployId = ?
+2024-12-03 11:50:50,525 [9] DEBUG -  Delete 0: DELETE FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:50:50,526 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:50:50,527 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:50:50,527 [9] DEBUG - Instantiated session factory
+2024-12-03 11:50:50,529 [9] DEBUG - Checking 0 named HQL queries
+2024-12-03 11:50:50,529 [9] DEBUG - Checking 0 named SQL queries
+2024-12-03 11:50:50,531 [9] DEBUG - Opening Hibernate Session.
+2024-12-03 11:50:50,536 [9] DEBUG - [session-id=b3ca4c45-3d11-4904-b264-3620db8650fb] opened session at timestamp: 638688036505, for session factory: [/49b4dbd8d6194eadaff5f33bdcd614f5]
+2024-12-03 11:50:50,539 [9] DEBUG - Begin (Unspecified)
+2024-12-03 11:50:50,539 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:50:50,636 [9] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project]).Where(p => (p.PId == 6765))
+2024-12-03 11:50:50,647 [9] DEBUG - unable to locate HQL query plan in cache; generating (.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), ))
+2024-12-03 11:50:50,793 [9] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:50:50,799 [9] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.Project (p) -> project0_
+2024-12-03 11:50:50,806 [9] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:50:50,814 [9] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:50:50,816 [9] INFO  - handling property dereference [Sonance.Models.DataAccess.Project (p) -> PId (Class)]
+2024-12-03 11:50:50,816 [9] DEBUG - getDataType() : PId -> NHibernate.Type.Int64Type
+2024-12-03 11:50:50,817 [9] DEBUG - Resolved :  p.PId -> project0_.pid
+2024-12-03 11:50:50,819 [9] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:50:50,821 [9] DEBUG - processQuery() : ( SELECT ( {select clause} project0_.pid ) ( FromClause{level=1} `projects` project0_ ) ( where ( == ( project0_.pid project0_.pid PId ) ? ) ) )
+2024-12-03 11:50:50,836 [9] DEBUG - Using FROM fragment [`projects` project0_]
+2024-12-03 11:50:50,837 [9] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:50:50,837 [9] DEBUG - throwQueryException() : no errors
+2024-12-03 11:50:50,864 [9] DEBUG - SQL: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?
+2024-12-03 11:50:50,864 [9] DEBUG - throwQueryException() : no errors
+2024-12-03 11:50:50,882 [9] DEBUG - located HQL query plan in cache (.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), ))
+2024-12-03 11:50:50,884 [9] DEBUG - find: .Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), )
+2024-12-03 11:50:50,885 [9] DEBUG - named parameters: {'p1'='6765'}
+2024-12-03 11:50:50,909 [9] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:50:50,909 [9] DEBUG - Building an DbCommand object for the SqlString: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?
+2024-12-03 11:50:50,911 [9] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:50:50,915 [9] DEBUG - select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:50:50,916 [9] DEBUG - Enlist Command
+2024-12-03 11:50:50,921 [9] DEBUG - ExecuteReader took 5 ms
+2024-12-03 11:50:50,921 [9] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:50:50,923 [9] DEBUG - processing result set
+2024-12-03 11:50:50,923 [9] DEBUG - done processing result set (0 rows)
+2024-12-03 11:50:50,924 [9] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:50:50,924 [9] DEBUG - DataReader was closed after 7 ms
+2024-12-03 11:50:50,924 [9] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:50:50,926 [9] DEBUG - total objects hydrated: 0
+2024-12-03 11:50:50,928 [9] DEBUG - initializing non-lazy collections
+2024-12-03 11:50:50,930 [9] DEBUG - Start Commit
+2024-12-03 11:50:50,930 [9] DEBUG - before transaction completion
+2024-12-03 11:50:50,932 [9] DEBUG - DbTransaction Committed
+2024-12-03 11:50:50,933 [9] DEBUG - Aggressively releasing database connection
+2024-12-03 11:50:50,933 [9] DEBUG - Closing connection
+2024-12-03 11:50:50,933 [9] DEBUG - transaction completion
+2024-12-03 11:50:50,935 [9] DEBUG - DbTransaction disposed.
+2024-12-03 11:50:50,936 [9] DEBUG - closing session
+2024-12-03 11:50:50,936 [9] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:50:50,939 [9] DEBUG - [session-id=b3ca4c45-3d11-4904-b264-3620db8650fb] running ISession.Dispose()
+2024-12-03 11:50:50,939 [9] DEBUG - [session-id=b3ca4c45-3d11-4904-b264-3620db8650fb] executing real Dispose(True)
+2024-12-03 11:50:50,941 [9] INFO  - Closing
+2024-12-03 11:50:50,941 [9] DEBUG - Disposing of ConnectionProvider.
+2024-12-03 11:50:50,942 [9] DEBUG - [session-id=b3ca4c45-3d11-4904-b264-3620db8650fb] running ISession.Dispose()
+2024-12-03 11:50:50,942 [9] DEBUG - Opening Hibernate Session.
+2024-12-03 11:50:50,942 [9] DEBUG - [session-id=c792e5c2-4ae8-4283-85fd-4f3ddf921560] opened session at timestamp: 638688036509, for session factory: [/49b4dbd8d6194eadaff5f33bdcd614f5]
+2024-12-03 11:50:50,942 [9] DEBUG - Begin (Unspecified)
+2024-12-03 11:50:50,943 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:50:50,945 [9] DEBUG - saving transient instance
+2024-12-03 11:50:50,946 [9] DEBUG - generated identifier: 6765, using strategy: NHibernate.Id.Assigned
+2024-12-03 11:50:50,946 [9] DEBUG - saving [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:50:50,954 [9] DEBUG - Start Commit
+2024-12-03 11:50:50,954 [9] DEBUG - before transaction completion
+2024-12-03 11:50:50,955 [9] DEBUG - flushing session
+2024-12-03 11:50:50,956 [9] DEBUG - processing flush-time cascades
+2024-12-03 11:50:50,957 [9] DEBUG - dirty checking collections
+2024-12-03 11:50:50,958 [9] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:50:50,962 [9] DEBUG - Processing unreferenced collections
+2024-12-03 11:50:50,962 [9] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:50:50,963 [9] DEBUG - Flushed: 1 insertions, 0 updates, 0 deletions to 1 objects
+2024-12-03 11:50:50,963 [9] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:50:50,964 [9] DEBUG - listing entities:
+2024-12-03 11:50:50,968 [9] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='bvbb@BPAI', 'ProjectCode'='dxslmv', 'ProjectDesc'='', 'CreatedOn'='12/3/2024 11:50:47 AM', 'Status'='1', 'Package_File'=null, 'UserEmail'=null, 'Password'=null}
+2024-12-03 11:50:50,968 [9] DEBUG - executing flush
+2024-12-03 11:50:50,968 [9] DEBUG - Registering flush begin
+2024-12-03 11:50:50,971 [9] DEBUG - Inserting entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:50:50,973 [9] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:50:50,973 [9] DEBUG - Building an DbCommand object for the SqlString: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:50:50,974 [9] DEBUG - Dehydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:50:50,974 [9] DEBUG - binding '1' to parameter: 0
+2024-12-03 11:50:50,975 [9] DEBUG - binding 'bvbb@BPAI' to parameter: 1
+2024-12-03 11:50:50,976 [9] DEBUG - binding 'dxslmv' to parameter: 2
+2024-12-03 11:50:50,976 [9] DEBUG - binding '' to parameter: 3
+2024-12-03 11:50:50,976 [9] DEBUG - binding '12/3/2024 11:50:47 AM' to parameter: 4
+2024-12-03 11:50:50,976 [9] DEBUG - binding '1' to parameter: 5
+2024-12-03 11:50:50,976 [9] DEBUG - binding null to parameter: 6
+2024-12-03 11:50:50,977 [9] DEBUG - binding null to parameter: 7
+2024-12-03 11:50:50,977 [9] DEBUG - binding null to parameter: 8
+2024-12-03 11:50:50,977 [9] DEBUG - binding '6765' to parameter: 9
+2024-12-03 11:50:50,978 [9] DEBUG - INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7, ?p8, ?p9);?p0 = 1 [Type: Int64 (0:0:0)], ?p1 = 'bvbb@BPAI' [Type: String (9:0:0)], ?p2 = 'dxslmv' [Type: String (6:0:0)], ?p3 = '' [Type: String (0:0:0)], ?p4 = 2024-12-03T11:50:47.7944898+05:30 [Type: DateTime (0:0:0)], ?p5 = 1 [Type: Int32 (0:0:0)], ?p6 = NULL [Type: String (0:0:0)], ?p7 = NULL [Type: String (0:0:0)], ?p8 = NULL [Type: String (0:0:0)], ?p9 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7, ?p8, ?p9);?p0 = 1 [Type: Int64 (0:0:0)], ?p1 = 'bvbb@BPAI' [Type: String (9:0:0)], ?p2 = 'dxslmv' [Type: String (6:0:0)], ?p3 = '' [Type: String (0:0:0)], ?p4 = 2024-12-03T11:50:47.7944898+05:30 [Type: DateTime (0:0:0)], ?p5 = 1 [Type: Int32 (0:0:0)], ?p6 = NULL [Type: String (0:0:0)], ?p7 = NULL [Type: String (0:0:0)], ?p8 = NULL [Type: String (0:0:0)], ?p9 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:50:50,978 [9] DEBUG - Enlist Command
+2024-12-03 11:50:50,981 [9] DEBUG - ExecuteNonQuery took 3 ms
+2024-12-03 11:50:50,982 [9] DEBUG - ExecuteBatch for 1 statements took 0 ms
+2024-12-03 11:50:50,983 [9] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:50:50,983 [9] DEBUG - Registering flush end
+2024-12-03 11:50:50,984 [9] DEBUG - post flush
+2024-12-03 11:50:50,988 [9] DEBUG - DbTransaction Committed
+2024-12-03 11:50:50,988 [9] DEBUG - Aggressively releasing database connection
+2024-12-03 11:50:50,988 [9] DEBUG - Closing connection
+2024-12-03 11:50:50,988 [9] DEBUG - transaction completion
+2024-12-03 11:50:50,989 [9] DEBUG - DbTransaction disposed.
+2024-12-03 11:50:50,989 [9] DEBUG - closing session
+2024-12-03 11:50:50,989 [9] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:50:50,989 [9] DEBUG - Already closed
+2024-12-03 11:50:50,990 [9] DEBUG - [session-id=c792e5c2-4ae8-4283-85fd-4f3ddf921560] running ISession.Dispose()
+2024-12-03 11:50:50,990 [9] DEBUG - [session-id=c792e5c2-4ae8-4283-85fd-4f3ddf921560] executing real Dispose(True)
+2024-12-03 11:50:50,992 [9] INFO  - Project bvbb@BPAI Created
+2024-12-03 11:50:50,992 [9] INFO  - Exit ProcessData
+2024-12-03 11:50:50,992 [9] INFO  - OnMessageReceived Exited.
+2024-12-03 11:50:50,992 [9] INFO  - Listining for Messages...
+2024-12-03 11:53:13,884 [9] INFO  - Received Messages : {"topic":"SA_RealeasedProject","data":"{\"Project\":{\"PId\":6765,\"AccountId\":1,\"ProjectName\":\"OnlineFoodOrderingSystem\",\"ProjectCode\":\"dxslmv\",\"ProjectDesc\":null,\"CreatedOn\":\"2024-12-03T11:51:10+05:30\",\"Status\":12,\"UserEmail\":\"sahanaprakashan@gmail.com\",\"Password\":\"C4WmYpER\",\"BgImagePath\":\"dxslmv.Png\",\"BgIconPath\":\"dxslmv.Png\",\"Iteration\":1},\"Package_File\":\"dxslmv_1.0.zip\"}","Offset":{"Topic":"SA_RealeasedProject","Partition":{"Value":0,"IsSpecial":false},"Offset":{"Value":10,"IsSpecial":false},"TopicPartition":{"Topic":"SA_RealeasedProject","Partition":{"Value":0,"IsSpecial":false}}}}
+2024-12-03 11:53:13,884 [9] INFO  - OnMessageReceived Entered.
+2024-12-03 11:53:13,884 [9] INFO  - Enter ProcessData
+2024-12-03 11:53:13,884 [9] DEBUG - Data Received, Topic : SA_RealeasedProject, Data : {"Project":{"PId":6765,"AccountId":1,"ProjectName":"OnlineFoodOrderingSystem","ProjectCode":"dxslmv","ProjectDesc":null,"CreatedOn":"2024-12-03T11:51:10+05:30","Status":12,"UserEmail":"sahanaprakashan@gmail.com","Password":"C4WmYpER","BgImagePath":"dxslmv.Png","BgIconPath":"dxslmv.Png","Iteration":1},"Package_File":"dxslmv_1.0.zip"}
+2024-12-03 11:53:13,885 [9] INFO  - Find Topic in jsonModel.ProcessTopicsData
+2024-12-03 11:53:13,885 [9] DEBUG - Found Topic : SA_RealeasedProject
+2024-12-03 11:53:13,885 [9] INFO  - Parsing Data to JObject
+2024-12-03 11:53:13,885 [9] INFO  - Parsing Data to JObject Success
+2024-12-03 11:53:13,885 [9] INFO  - Loading DLL from Config
+2024-12-03 11:53:13,886 [9] INFO  - Creating Class Instance
+2024-12-03 11:53:13,886 [9] INFO  - Calling Method
+2024-12-03 11:53:13,893 [9] DEBUG - connection.provider=NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:53:13,893 [9] DEBUG - connection.driver_class=NHibernate.Driver.MySqlDataDriver
+2024-12-03 11:53:13,893 [9] DEBUG - connection.connection_string=Server=localhost;Database=dc_service;User ID=root;Password=root;
+2024-12-03 11:53:13,893 [9] DEBUG - dialect=NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,893 [9] DEBUG - show_sql=true
+2024-12-03 11:53:13,894 [9] DEBUG - <-Sonance.DataAccess
+2024-12-03 11:53:13,894 [9] INFO  - Searching for mapped documents in assembly: Sonance.DataAccess
+2024-12-03 11:53:13,894 [9] WARN  - No mapped documents found in assembly: Sonance.DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2024-12-03 11:53:13,894 [9] DEBUG - properties: System.Collections.Generic.Dictionary`2[System.String,System.String]
+2024-12-03 11:53:13,894 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/project.hbm.xml
+2024-12-03 11:53:13,895 [9] INFO  - Mapping class: Sonance.Models.DataAccess.Project -> projects
+2024-12-03 11:53:13,895 [9] DEBUG - Mapped property: PId -> pid, type: Int64
+2024-12-03 11:53:13,895 [9] DEBUG - Mapped property: AccountId -> acctid, type: Int64
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: ProjectName -> project_name, type: String
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: ProjectCode -> project_code, type: String
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: ProjectDesc -> project_desc, type: String
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: CreatedOn -> datecreated, type: DateTime
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: Status -> status, type: Int32
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: Package_File -> Package_File, type: String
+2024-12-03 11:53:13,896 [9] DEBUG - Mapped property: UserEmail -> user_email, type: String
+2024-12-03 11:53:13,897 [9] DEBUG - Mapped property: Password -> password, type: String
+2024-12-03 11:53:13,897 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/projectconfig.hbm.xml
+2024-12-03 11:53:13,897 [9] INFO  - Mapping class: Sonance.Models.DataAccess.ProjectConfig -> projectconfig
+2024-12-03 11:53:13,897 [9] DEBUG - Mapped property: PSId -> psid, type: Int64
+2024-12-03 11:53:13,898 [9] DEBUG - Mapped property: ProjId -> projid, type: Int64
+2024-12-03 11:53:13,898 [9] DEBUG - Mapped property: HostSettings -> hostsettings, type: String
+2024-12-03 11:53:13,898 [9] DEBUG - Mapped property: Deploymentdetails -> DeploymentDetails, type: String
+2024-12-03 11:53:13,898 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/deployconfig.hbm.xml
+2024-12-03 11:53:13,899 [9] INFO  - Mapping class: Sonance.Models.DataAccess.DeployConfig -> deployconfig
+2024-12-03 11:53:13,899 [9] DEBUG - Mapped property: DeployId -> DeployId, type: Int64
+2024-12-03 11:53:13,899 [9] DEBUG - Mapped property: PId -> PId, type: Int64
+2024-12-03 11:53:13,899 [9] DEBUG - Mapped property: AcctId -> AcctId, type: Int64
+2024-12-03 11:53:13,899 [9] DEBUG - Mapped property: CloudType -> CloudType, type: String
+2024-12-03 11:53:13,900 [9] DEBUG - Mapped property: DeployUrl -> DeployUrl, type: String
+2024-12-03 11:53:13,900 [9] DEBUG - Mapped property: DeployPort -> DeployPort, type: String
+2024-12-03 11:53:13,901 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,901 [9] INFO  - checking mappings queue
+2024-12-03 11:53:13,901 [9] INFO  - processing one-to-many association mappings
+2024-12-03 11:53:13,902 [9] INFO  - processing one-to-one association property references
+2024-12-03 11:53:13,902 [9] INFO  - processing foreign key constraints
+2024-12-03 11:53:13,902 [9] INFO  - processing filters (second pass)
+2024-12-03 11:53:13,902 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,902 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,903 [9] INFO  - Using dialect defined converter
+2024-12-03 11:53:13,903 [9] INFO  - Generate SQL with comments: disabled
+2024-12-03 11:53:13,904 [9] INFO  - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:53:13,904 [9] INFO  - Configuring ConnectionProvider
+2024-12-03 11:53:13,904 [9] INFO  - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-12-03 11:53:13,904 [9] INFO  - Optimize cache for minimal puts: False
+2024-12-03 11:53:13,904 [9] INFO  - Connection release mode: auto
+2024-12-03 11:53:13,904 [9] INFO  - Default batch fetch size: 1
+2024-12-03 11:53:13,904 [9] INFO  - echoing all SQL to stdout
+2024-12-03 11:53:13,905 [9] INFO  - Statistics: disabled
+2024-12-03 11:53:13,905 [9] INFO  - Deleted entity synthetic identifier rollback: disabled
+2024-12-03 11:53:13,905 [9] INFO  - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-12-03 11:53:13,905 [9] INFO  - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-12-03 11:53:13,905 [9] INFO  - Query language substitutions: {}
+2024-12-03 11:53:13,905 [9] INFO  - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:53:13,906 [9] INFO  - Order SQL inserts for batching: disabled
+2024-12-03 11:53:13,906 [9] INFO  - Order SQL updates for batching: disabled
+2024-12-03 11:53:13,906 [9] DEBUG - Wrap result sets: disabled
+2024-12-03 11:53:13,906 [9] DEBUG - Batch versioned data: disabled
+2024-12-03 11:53:13,906 [9] INFO  - Batcher factory: NHibernate.AdoNet.NonBatchingBatcherFactory, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:53:13,906 [9] INFO  - Default flush mode: Auto
+2024-12-03 11:53:13,906 [9] INFO  - Named query checking : enabled
+2024-12-03 11:53:13,907 [9] DEBUG - Track session id: enabled
+2024-12-03 11:53:13,907 [9] INFO  - building session factory
+2024-12-03 11:53:13,907 [9] DEBUG - Session factory constructed with filter configurations : {}
+2024-12-03 11:53:13,907 [9] DEBUG - instantiating session factory with properties: {'use_reflection_optimizer'='True', 'connection.provider'='NHibernate.Connection.DriverConnectionProvider', 'connection.driver_class'='NHibernate.Driver.MySqlDataDriver', 'connection.connection_string'='Server=localhost;Database=dc_service;User ID=root;Password=root;', 'dialect'='NHibernate.Dialect.MySQL5Dialect', 'show_sql'='true'}
+2024-12-03 11:53:13,907 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:53:13,909 [9] DEBUG - Closing connection
+2024-12-03 11:53:13,909 [9] DEBUG - registered: 487bc2de47aa4bd0850328e58d7edee0(unnamed)
+2024-12-03 11:53:13,909 [9] INFO  - no name configured
+2024-12-03 11:53:13,909 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,909 [9] DEBUG - cache for: Sonance.Models.DataAccess.Project usage strategy: read-write
+2024-12-03 11:53:13,909 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,910 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,910 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,910 [9] DEBUG - cache for: Sonance.Models.DataAccess.ProjectConfig usage strategy: read-write
+2024-12-03 11:53:13,910 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,910 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,911 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,911 [9] DEBUG - cache for: Sonance.Models.DataAccess.DeployConfig usage strategy: read-write
+2024-12-03 11:53:13,911 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,911 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,912 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,912 [9] DEBUG -  Version select: SELECT pid FROM `projects` WHERE pid = ?
+2024-12-03 11:53:13,912 [9] DEBUG -  Snapshot select: SELECT project_.pid, project_.acctid as acctid2_0_, project_.project_name as project3_0_, project_.project_code as project4_0_, project_.project_desc as project5_0_, project_.datecreated as datecreated6_0_, project_.`status` as status7_0_, project_.Package_File as package8_0_, project_.user_email as user9_0_, project_.password as password10_0_ FROM `projects` project_ WHERE project_.pid=?
+2024-12-03 11:53:13,912 [9] DEBUG -  Insert 0: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:53:13,912 [9] DEBUG -  Update 0: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:53:13,912 [9] DEBUG -  Delete 0: DELETE FROM `projects` WHERE pid = ?
+2024-12-03 11:53:13,912 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,913 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,913 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,913 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,913 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,913 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,914 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,914 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,914 [9] DEBUG -  Version select: SELECT psid FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:53:13,914 [9] DEBUG -  Snapshot select: SELECT projectcon_.psid, projectcon_.projid as projid2_1_, projectcon_.hostsettings as hostsettings3_1_, projectcon_.DeploymentDetails as deploymentdetails4_1_ FROM `projectconfig` projectcon_ WHERE projectcon_.psid=?
+2024-12-03 11:53:13,914 [9] DEBUG -  Insert 0: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails, psid) VALUES (?, ?, ?, ?)
+2024-12-03 11:53:13,915 [9] DEBUG -  Update 0: UPDATE `projectconfig` SET projid = ?, hostsettings = ?, DeploymentDetails = ? WHERE psid = ?
+2024-12-03 11:53:13,915 [9] DEBUG -  Delete 0: DELETE FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:53:13,915 [9] DEBUG -  Identity insert: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails) VALUES (?, ?, ?);SELECT LAST_INSERT_ID()
+2024-12-03 11:53:13,915 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,915 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,916 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,916 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,916 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,916 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,916 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,917 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,917 [9] DEBUG -  Version select: SELECT DeployId FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:53:13,917 [9] DEBUG -  Snapshot select: SELECT deployconf_.DeployId, deployconf_.PId as pid2_2_, deployconf_.AcctId as acctid3_2_, deployconf_.CloudType as cloudtype4_2_, deployconf_.DeployUrl as deployurl5_2_, deployconf_.DeployPort as deployport6_2_ FROM `deployconfig` deployconf_ WHERE deployconf_.DeployId=?
+2024-12-03 11:53:13,917 [9] DEBUG -  Insert 0: INSERT INTO `deployconfig` (PId, AcctId, CloudType, DeployUrl, DeployPort, DeployId) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-03 11:53:13,917 [9] DEBUG -  Update 0: UPDATE `deployconfig` SET PId = ?, AcctId = ?, CloudType = ?, DeployUrl = ?, DeployPort = ? WHERE DeployId = ?
+2024-12-03 11:53:13,917 [9] DEBUG -  Delete 0: DELETE FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:53:13,918 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,918 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,918 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,918 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,918 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,919 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,919 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,919 [9] DEBUG - Instantiated session factory
+2024-12-03 11:53:13,919 [9] DEBUG - Checking 0 named HQL queries
+2024-12-03 11:53:13,919 [9] DEBUG - Checking 0 named SQL queries
+2024-12-03 11:53:13,919 [9] DEBUG - Opening Hibernate Session.
+2024-12-03 11:53:13,919 [9] DEBUG - [session-id=d4e36cf1-3b0a-4ff6-8d8d-5bce167962f6] opened session at timestamp: 638688037939, for session factory: [/487bc2de47aa4bd0850328e58d7edee0]
+2024-12-03 11:53:13,920 [9] DEBUG - Begin (Unspecified)
+2024-12-03 11:53:13,920 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:53:13,921 [9] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project]).Where(p => (p.PId == 6765))
+2024-12-03 11:53:13,921 [9] DEBUG - unable to locate HQL query plan in cache; generating (.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), ))
+2024-12-03 11:53:13,922 [9] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:53:13,922 [9] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.Project (p) -> project0_
+2024-12-03 11:53:13,923 [9] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:53:13,923 [9] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:53:13,923 [9] INFO  - handling property dereference [Sonance.Models.DataAccess.Project (p) -> PId (Class)]
+2024-12-03 11:53:13,923 [9] DEBUG - getDataType() : PId -> NHibernate.Type.Int64Type
+2024-12-03 11:53:13,923 [9] DEBUG - Resolved :  p.PId -> project0_.pid
+2024-12-03 11:53:13,923 [9] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:53:13,923 [9] DEBUG - processQuery() : ( SELECT ( {select clause} project0_.pid ) ( FromClause{level=1} `projects` project0_ ) ( where ( == ( project0_.pid project0_.pid PId ) ? ) ) )
+2024-12-03 11:53:13,924 [9] DEBUG - Using FROM fragment [`projects` project0_]
+2024-12-03 11:53:13,924 [9] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:53:13,924 [9] DEBUG - throwQueryException() : no errors
+2024-12-03 11:53:13,924 [9] DEBUG - SQL: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?
+2024-12-03 11:53:13,924 [9] DEBUG - throwQueryException() : no errors
+2024-12-03 11:53:13,925 [9] DEBUG - located HQL query plan in cache (.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), ))
+2024-12-03 11:53:13,925 [9] DEBUG - find: .Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (Equal(p.PId, p1<System.Int64>))), )
+2024-12-03 11:53:13,925 [9] DEBUG - named parameters: {'p1'='6765'}
+2024-12-03 11:53:13,925 [9] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:53:13,926 [9] DEBUG - Building an DbCommand object for the SqlString: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?
+2024-12-03 11:53:13,926 [9] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:53:13,926 [9] DEBUG - select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:53:13,926 [9] DEBUG - Enlist Command
+2024-12-03 11:53:13,927 [9] DEBUG - ExecuteReader took 0 ms
+2024-12-03 11:53:13,927 [9] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:53:13,927 [9] DEBUG - processing result set
+2024-12-03 11:53:13,928 [9] DEBUG - result set row: 0
+2024-12-03 11:53:13,930 [9] DEBUG - returning '6765' as column: pid1_0_
+2024-12-03 11:53:13,932 [9] DEBUG - result row: EntityKey[Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,934 [9] DEBUG - Initializing object from DataReader: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,936 [9] DEBUG - Hydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,936 [9] DEBUG - returning '1' as column: acctid2_0_
+2024-12-03 11:53:13,936 [9] DEBUG - returning 'bvbb@BPAI' as column: project3_0_
+2024-12-03 11:53:13,936 [9] DEBUG - returning 'dxslmv' as column: project4_0_
+2024-12-03 11:53:13,937 [9] DEBUG - returning '' as column: project5_0_
+2024-12-03 11:53:13,937 [9] DEBUG - returning '12/3/2024 11:50:48 AM' as column: datecreated6_0_
+2024-12-03 11:53:13,937 [9] DEBUG - returning '1' as column: status7_0_
+2024-12-03 11:53:13,938 [9] DEBUG - returning null as column: package8_0_
+2024-12-03 11:53:13,938 [9] DEBUG - returning null as column: user9_0_
+2024-12-03 11:53:13,938 [9] DEBUG - returning null as column: password10_0_
+2024-12-03 11:53:13,940 [9] DEBUG - done processing result set (1 rows)
+2024-12-03 11:53:13,941 [9] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:53:13,941 [9] DEBUG - DataReader was closed after 14 ms
+2024-12-03 11:53:13,941 [9] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:53:13,941 [9] DEBUG - total objects hydrated: 1
+2024-12-03 11:53:13,944 [9] DEBUG - resolving associations for [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,945 [9] DEBUG - adding entity to second-level cache: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,948 [9] DEBUG - Caching: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:53:13,949 [9] DEBUG - Cached: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:53:13,950 [9] DEBUG - done materializing entity [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,950 [9] DEBUG - initializing non-lazy collections
+2024-12-03 11:53:13,950 [9] DEBUG - Start Commit
+2024-12-03 11:53:13,950 [9] DEBUG - before transaction completion
+2024-12-03 11:53:13,950 [9] DEBUG - flushing session
+2024-12-03 11:53:13,950 [9] DEBUG - processing flush-time cascades
+2024-12-03 11:53:13,951 [9] DEBUG - dirty checking collections
+2024-12-03 11:53:13,951 [9] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:53:13,951 [9] DEBUG - Processing unreferenced collections
+2024-12-03 11:53:13,951 [9] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:53:13,951 [9] DEBUG - Flushed: 0 insertions, 0 updates, 0 deletions to 1 objects
+2024-12-03 11:53:13,952 [9] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:53:13,952 [9] DEBUG - listing entities:
+2024-12-03 11:53:13,952 [9] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='bvbb@BPAI', 'ProjectCode'='dxslmv', 'ProjectDesc'='', 'CreatedOn'='12/3/2024 11:50:48 AM', 'Status'='1', 'Package_File'=null, 'UserEmail'=null, 'Password'=null}
+2024-12-03 11:53:13,952 [9] DEBUG - executing flush
+2024-12-03 11:53:13,952 [9] DEBUG - Registering flush begin
+2024-12-03 11:53:13,952 [9] DEBUG - Registering flush end
+2024-12-03 11:53:13,953 [9] DEBUG - post flush
+2024-12-03 11:53:13,953 [9] DEBUG - DbTransaction Committed
+2024-12-03 11:53:13,953 [9] DEBUG - Aggressively releasing database connection
+2024-12-03 11:53:13,953 [9] DEBUG - Closing connection
+2024-12-03 11:53:13,953 [9] DEBUG - transaction completion
+2024-12-03 11:53:13,954 [9] DEBUG - DbTransaction disposed.
+2024-12-03 11:53:13,954 [9] DEBUG - closing session
+2024-12-03 11:53:13,954 [9] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:53:13,954 [9] DEBUG - [session-id=d4e36cf1-3b0a-4ff6-8d8d-5bce167962f6] running ISession.Dispose()
+2024-12-03 11:53:13,954 [9] DEBUG - [session-id=d4e36cf1-3b0a-4ff6-8d8d-5bce167962f6] executing real Dispose(True)
+2024-12-03 11:53:13,954 [9] INFO  - Closing
+2024-12-03 11:53:13,955 [9] DEBUG - Disposing of ConnectionProvider.
+2024-12-03 11:53:13,955 [9] DEBUG - [session-id=d4e36cf1-3b0a-4ff6-8d8d-5bce167962f6] running ISession.Dispose()
+2024-12-03 11:53:13,955 [9] INFO  - Project Updation Data received from SA service6765OnlineFoodOrderingSystemdxslmv
+2024-12-03 11:53:13,955 [9] DEBUG - connection.provider=NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:53:13,955 [9] DEBUG - connection.driver_class=NHibernate.Driver.MySqlDataDriver
+2024-12-03 11:53:13,956 [9] DEBUG - connection.connection_string=Server=localhost;Database=dc_service;User ID=root;Password=root;
+2024-12-03 11:53:13,956 [9] DEBUG - dialect=NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,956 [9] DEBUG - show_sql=true
+2024-12-03 11:53:13,956 [9] DEBUG - <-Sonance.DataAccess
+2024-12-03 11:53:13,956 [9] INFO  - Searching for mapped documents in assembly: Sonance.DataAccess
+2024-12-03 11:53:13,956 [9] WARN  - No mapped documents found in assembly: Sonance.DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2024-12-03 11:53:13,957 [9] DEBUG - properties: System.Collections.Generic.Dictionary`2[System.String,System.String]
+2024-12-03 11:53:13,957 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/project.hbm.xml
+2024-12-03 11:53:13,957 [9] INFO  - Mapping class: Sonance.Models.DataAccess.Project -> projects
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: PId -> pid, type: Int64
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: AccountId -> acctid, type: Int64
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: ProjectName -> project_name, type: String
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: ProjectCode -> project_code, type: String
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: ProjectDesc -> project_desc, type: String
+2024-12-03 11:53:13,958 [9] DEBUG - Mapped property: CreatedOn -> datecreated, type: DateTime
+2024-12-03 11:53:13,959 [9] DEBUG - Mapped property: Status -> status, type: Int32
+2024-12-03 11:53:13,959 [9] DEBUG - Mapped property: Package_File -> Package_File, type: String
+2024-12-03 11:53:13,959 [9] DEBUG - Mapped property: UserEmail -> user_email, type: String
+2024-12-03 11:53:13,959 [9] DEBUG - Mapped property: Password -> password, type: String
+2024-12-03 11:53:13,959 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/projectconfig.hbm.xml
+2024-12-03 11:53:13,960 [9] INFO  - Mapping class: Sonance.Models.DataAccess.ProjectConfig -> projectconfig
+2024-12-03 11:53:13,960 [9] DEBUG - Mapped property: PSId -> psid, type: Int64
+2024-12-03 11:53:13,960 [9] DEBUG - Mapped property: ProjId -> projid, type: Int64
+2024-12-03 11:53:13,960 [9] DEBUG - Mapped property: HostSettings -> hostsettings, type: String
+2024-12-03 11:53:13,960 [9] DEBUG - Mapped property: Deploymentdetails -> DeploymentDetails, type: String
+2024-12-03 11:53:13,960 [9] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/deployconfig.hbm.xml
+2024-12-03 11:53:13,961 [9] INFO  - Mapping class: Sonance.Models.DataAccess.DeployConfig -> deployconfig
+2024-12-03 11:53:13,961 [9] DEBUG - Mapped property: DeployId -> DeployId, type: Int64
+2024-12-03 11:53:13,962 [9] DEBUG - Mapped property: PId -> PId, type: Int64
+2024-12-03 11:53:13,962 [9] DEBUG - Mapped property: AcctId -> AcctId, type: Int64
+2024-12-03 11:53:13,962 [9] DEBUG - Mapped property: CloudType -> CloudType, type: String
+2024-12-03 11:53:13,962 [9] DEBUG - Mapped property: DeployUrl -> DeployUrl, type: String
+2024-12-03 11:53:13,962 [9] DEBUG - Mapped property: DeployPort -> DeployPort, type: String
+2024-12-03 11:53:13,962 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,963 [9] INFO  - checking mappings queue
+2024-12-03 11:53:13,963 [9] INFO  - processing one-to-many association mappings
+2024-12-03 11:53:13,963 [9] INFO  - processing one-to-one association property references
+2024-12-03 11:53:13,963 [9] INFO  - processing foreign key constraints
+2024-12-03 11:53:13,963 [9] INFO  - processing filters (second pass)
+2024-12-03 11:53:13,963 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,964 [9] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:53:13,964 [9] INFO  - Using dialect defined converter
+2024-12-03 11:53:13,964 [9] INFO  - Generate SQL with comments: disabled
+2024-12-03 11:53:13,964 [9] INFO  - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:53:13,964 [9] INFO  - Configuring ConnectionProvider
+2024-12-03 11:53:13,965 [9] INFO  - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-12-03 11:53:13,965 [9] INFO  - Optimize cache for minimal puts: False
+2024-12-03 11:53:13,965 [9] INFO  - Connection release mode: auto
+2024-12-03 11:53:13,965 [9] INFO  - Default batch fetch size: 1
+2024-12-03 11:53:13,965 [9] INFO  - echoing all SQL to stdout
+2024-12-03 11:53:13,965 [9] INFO  - Statistics: disabled
+2024-12-03 11:53:13,965 [9] INFO  - Deleted entity synthetic identifier rollback: disabled
+2024-12-03 11:53:13,965 [9] INFO  - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-12-03 11:53:13,966 [9] INFO  - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-12-03 11:53:13,966 [9] INFO  - Query language substitutions: {}
+2024-12-03 11:53:13,966 [9] INFO  - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:53:13,966 [9] INFO  - Order SQL inserts for batching: disabled
+2024-12-03 11:53:13,966 [9] INFO  - Order SQL updates for batching: disabled
+2024-12-03 11:53:13,966 [9] DEBUG - Wrap result sets: disabled
+2024-12-03 11:53:13,966 [9] DEBUG - Batch versioned data: disabled
+2024-12-03 11:53:13,966 [9] INFO  - Batcher factory: NHibernate.AdoNet.NonBatchingBatcherFactory, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:53:13,967 [9] INFO  - Default flush mode: Auto
+2024-12-03 11:53:13,967 [9] INFO  - Named query checking : enabled
+2024-12-03 11:53:13,967 [9] DEBUG - Track session id: enabled
+2024-12-03 11:53:13,967 [9] INFO  - building session factory
+2024-12-03 11:53:13,967 [9] DEBUG - Session factory constructed with filter configurations : {}
+2024-12-03 11:53:13,967 [9] DEBUG - instantiating session factory with properties: {'use_reflection_optimizer'='True', 'connection.provider'='NHibernate.Connection.DriverConnectionProvider', 'connection.driver_class'='NHibernate.Driver.MySqlDataDriver', 'connection.connection_string'='Server=localhost;Database=dc_service;User ID=root;Password=root;', 'dialect'='NHibernate.Dialect.MySQL5Dialect', 'show_sql'='true'}
+2024-12-03 11:53:13,967 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:53:13,969 [9] DEBUG - Closing connection
+2024-12-03 11:53:13,969 [9] DEBUG - registered: 52f9b10b29ec4b8683514f410110bec3(unnamed)
+2024-12-03 11:53:13,969 [9] INFO  - no name configured
+2024-12-03 11:53:13,969 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,969 [9] DEBUG - cache for: Sonance.Models.DataAccess.Project usage strategy: read-write
+2024-12-03 11:53:13,969 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,969 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,970 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,970 [9] DEBUG - cache for: Sonance.Models.DataAccess.ProjectConfig usage strategy: read-write
+2024-12-03 11:53:13,970 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,970 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,970 [9] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:53:13,970 [9] DEBUG - cache for: Sonance.Models.DataAccess.DeployConfig usage strategy: read-write
+2024-12-03 11:53:13,971 [9] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,971 [9] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,971 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:53:13,971 [9] DEBUG -  Version select: SELECT pid FROM `projects` WHERE pid = ?
+2024-12-03 11:53:13,971 [9] DEBUG -  Snapshot select: SELECT project_.pid, project_.acctid as acctid2_0_, project_.project_name as project3_0_, project_.project_code as project4_0_, project_.project_desc as project5_0_, project_.datecreated as datecreated6_0_, project_.`status` as status7_0_, project_.Package_File as package8_0_, project_.user_email as user9_0_, project_.password as password10_0_ FROM `projects` project_ WHERE project_.pid=?
+2024-12-03 11:53:13,971 [9] DEBUG -  Insert 0: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:53:13,972 [9] DEBUG -  Update 0: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:53:13,972 [9] DEBUG -  Delete 0: DELETE FROM `projects` WHERE pid = ?
+2024-12-03 11:53:13,972 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,972 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,972 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,972 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,973 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:53:13,973 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,973 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:53:13,973 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:53:13,973 [9] DEBUG -  Version select: SELECT psid FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:53:13,973 [9] DEBUG -  Snapshot select: SELECT projectcon_.psid, projectcon_.projid as projid2_1_, projectcon_.hostsettings as hostsettings3_1_, projectcon_.DeploymentDetails as deploymentdetails4_1_ FROM `projectconfig` projectcon_ WHERE projectcon_.psid=?
+2024-12-03 11:53:13,974 [9] DEBUG -  Insert 0: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails, psid) VALUES (?, ?, ?, ?)
+2024-12-03 11:53:13,974 [9] DEBUG -  Update 0: UPDATE `projectconfig` SET projid = ?, hostsettings = ?, DeploymentDetails = ? WHERE psid = ?
+2024-12-03 11:53:13,974 [9] DEBUG -  Delete 0: DELETE FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:53:13,974 [9] DEBUG -  Identity insert: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails) VALUES (?, ?, ?);SELECT LAST_INSERT_ID()
+2024-12-03 11:53:13,974 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,974 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,974 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,975 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,975 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:53:13,975 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,975 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:53:13,975 [9] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:53:13,975 [9] DEBUG -  Version select: SELECT DeployId FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:53:13,976 [9] DEBUG -  Snapshot select: SELECT deployconf_.DeployId, deployconf_.PId as pid2_2_, deployconf_.AcctId as acctid3_2_, deployconf_.CloudType as cloudtype4_2_, deployconf_.DeployUrl as deployurl5_2_, deployconf_.DeployPort as deployport6_2_ FROM `deployconfig` deployconf_ WHERE deployconf_.DeployId=?
+2024-12-03 11:53:13,976 [9] DEBUG -  Insert 0: INSERT INTO `deployconfig` (PId, AcctId, CloudType, DeployUrl, DeployPort, DeployId) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-03 11:53:13,976 [9] DEBUG -  Update 0: UPDATE `deployconfig` SET PId = ?, AcctId = ?, CloudType = ?, DeployUrl = ?, DeployPort = ? WHERE DeployId = ?
+2024-12-03 11:53:13,976 [9] DEBUG -  Delete 0: DELETE FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:53:13,976 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,976 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,977 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,977 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,977 [9] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:53:13,977 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,977 [9] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:53:13,977 [9] DEBUG - Instantiated session factory
+2024-12-03 11:53:13,978 [9] DEBUG - Checking 0 named HQL queries
+2024-12-03 11:53:13,978 [9] DEBUG - Checking 0 named SQL queries
+2024-12-03 11:53:13,978 [9] DEBUG - Opening Hibernate Session.
+2024-12-03 11:53:13,978 [9] DEBUG - [session-id=9e385c6e-6e41-43a3-bb88-1519dd260280] opened session at timestamp: 638688037939, for session factory: [/52f9b10b29ec4b8683514f410110bec3]
+2024-12-03 11:53:13,979 [9] DEBUG - Begin (Unspecified)
+2024-12-03 11:53:13,979 [9] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:53:13,980 [9] DEBUG - updating detached instance
+2024-12-03 11:53:13,981 [9] DEBUG - updating [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,982 [9] DEBUG - updating [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,982 [9] DEBUG - Start Commit
+2024-12-03 11:53:13,982 [9] DEBUG - before transaction completion
+2024-12-03 11:53:13,982 [9] DEBUG - flushing session
+2024-12-03 11:53:13,982 [9] DEBUG - processing flush-time cascades
+2024-12-03 11:53:13,983 [9] DEBUG - dirty checking collections
+2024-12-03 11:53:13,983 [9] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:53:13,984 [9] DEBUG - Updating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,984 [9] DEBUG - Processing unreferenced collections
+2024-12-03 11:53:13,984 [9] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:53:13,984 [9] DEBUG - Flushed: 0 insertions, 1 updates, 0 deletions to 1 objects
+2024-12-03 11:53:13,985 [9] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:53:13,985 [9] DEBUG - listing entities:
+2024-12-03 11:53:13,985 [9] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='OnlineFoodOrderingSystem', 'ProjectCode'='dxslmv', 'ProjectDesc'=null, 'CreatedOn'='12/3/2024 11:51:10 AM', 'Status'='12', 'Package_File'='F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip', 'UserEmail'='sahanaprakashan@gmail.com', 'Password'='C4WmYpER'}
+2024-12-03 11:53:13,985 [9] DEBUG - executing flush
+2024-12-03 11:53:13,985 [9] DEBUG - Registering flush begin
+2024-12-03 11:53:13,986 [9] DEBUG - Invalidating: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:53:13,992 [9] DEBUG - Updating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,992 [9] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:53:13,993 [9] DEBUG - Building an DbCommand object for the SqlString: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:53:13,993 [9] DEBUG - Dehydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:53:13,993 [9] DEBUG - binding '1' to parameter: 0
+2024-12-03 11:53:13,993 [9] DEBUG - binding 'OnlineFoodOrderingSystem' to parameter: 1
+2024-12-03 11:53:13,993 [9] DEBUG - binding 'dxslmv' to parameter: 2
+2024-12-03 11:53:13,993 [9] DEBUG - binding null to parameter: 3
+2024-12-03 11:53:13,994 [9] DEBUG - binding '12/3/2024 11:51:10 AM' to parameter: 4
+2024-12-03 11:53:13,994 [9] DEBUG - binding '12' to parameter: 5
+2024-12-03 11:53:13,994 [9] DEBUG - binding 'F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip' to parameter: 6
+2024-12-03 11:53:13,994 [9] DEBUG - binding 'sahanaprakashan@gmail.com' to parameter: 7
+2024-12-03 11:53:13,994 [9] DEBUG - binding 'C4WmYpER' to parameter: 8
+2024-12-03 11:53:13,995 [9] DEBUG - binding '6765' to parameter: 9
+2024-12-03 11:53:13,995 [9] DEBUG - UPDATE `projects` SET acctid = ?p0, project_name = ?p1, project_code = ?p2, project_desc = ?p3, datecreated = ?p4, `status` = ?p5, Package_File = ?p6, user_email = ?p7, password = ?p8 WHERE pid = ?p9;?p0 = 1 [Type: Int64 (0:0:0)], ?p1 = 'OnlineFoodOrderingSystem' [Type: String (24:0:0)], ?p2 = 'dxslmv' [Type: String (6:0:0)], ?p3 = NULL [Type: String (0:0:0)], ?p4 = 2024-12-03T11:51:10.0000000+05:30 [Type: DateTime (0:0:0)], ?p5 = 12 [Type: Int32 (0:0:0)], ?p6 = 'F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip' [Type: String (72:0:0)], ?p7 = 'sahanaprakashan@gmail.com' [Type: String (25:0:0)], ?p8 = 'C4WmYpER' [Type: String (8:0:0)], ?p9 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: UPDATE `projects` SET acctid = ?p0, project_name = ?p1, project_code = ?p2, project_desc = ?p3, datecreated = ?p4, `status` = ?p5, Package_File = ?p6, user_email = ?p7, password = ?p8 WHERE pid = ?p9;?p0 = 1 [Type: Int64 (0:0:0)], ?p1 = 'OnlineFoodOrderingSystem' [Type: String (24:0:0)], ?p2 = 'dxslmv' [Type: String (6:0:0)], ?p3 = NULL [Type: String (0:0:0)], ?p4 = 2024-12-03T11:51:10.0000000+05:30 [Type: DateTime (0:0:0)], ?p5 = 12 [Type: Int32 (0:0:0)], ?p6 = 'F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip' [Type: String (72:0:0)], ?p7 = 'sahanaprakashan@gmail.com' [Type: String (25:0:0)], ?p8 = 'C4WmYpER' [Type: String (8:0:0)], ?p9 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:53:13,995 [9] DEBUG - Enlist Command
+2024-12-03 11:53:13,996 [9] DEBUG - ExecuteNonQuery took 0 ms
+2024-12-03 11:53:13,997 [9] DEBUG - ExecuteBatch for 1 statements took 0 ms
+2024-12-03 11:53:13,997 [9] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:53:13,997 [9] DEBUG - Registering flush end
+2024-12-03 11:53:13,997 [9] DEBUG - post flush
+2024-12-03 11:53:14,000 [9] DEBUG - DbTransaction Committed
+2024-12-03 11:53:14,000 [9] DEBUG - Aggressively releasing database connection
+2024-12-03 11:53:14,000 [9] DEBUG - Closing connection
+2024-12-03 11:53:14,000 [9] DEBUG - transaction completion
+2024-12-03 11:53:14,001 [9] DEBUG - Releasing: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:53:14,001 [9] WARN  - An item was expired by the cache while it was locked (increase your cache timeout): Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:53:14,002 [9] DEBUG - DbTransaction disposed.
+2024-12-03 11:53:14,002 [9] DEBUG - closing session
+2024-12-03 11:53:14,002 [9] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:53:14,002 [9] INFO  - Closing
+2024-12-03 11:53:14,002 [9] DEBUG - Disposing of ConnectionProvider.
+2024-12-03 11:53:14,002 [9] DEBUG - [session-id=9e385c6e-6e41-43a3-bb88-1519dd260280] running ISession.Dispose()
+2024-12-03 11:53:14,002 [9] DEBUG - [session-id=9e385c6e-6e41-43a3-bb88-1519dd260280] executing real Dispose(True)
+2024-12-03 11:53:14,003 [9] INFO  - Exit ProcessData
+2024-12-03 11:53:14,003 [9] INFO  - OnMessageReceived Exited.
+2024-12-03 11:53:14,003 [9] INFO  - Listining for Messages...
+2024-12-03 11:54:11,614 [14] DEBUG - connection.provider=NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:54:11,614 [14] DEBUG - connection.driver_class=NHibernate.Driver.MySqlDataDriver
+2024-12-03 11:54:11,614 [14] DEBUG - connection.connection_string=Server=localhost;Database=dc_service;User ID=root;Password=root;
+2024-12-03 11:54:11,615 [14] DEBUG - dialect=NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:11,615 [14] DEBUG - show_sql=true
+2024-12-03 11:54:11,615 [14] DEBUG - <-Sonance.DataAccess
+2024-12-03 11:54:11,615 [14] INFO  - Searching for mapped documents in assembly: Sonance.DataAccess
+2024-12-03 11:54:11,615 [14] WARN  - No mapped documents found in assembly: Sonance.DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2024-12-03 11:54:11,615 [14] DEBUG - properties: System.Collections.Generic.Dictionary`2[System.String,System.String]
+2024-12-03 11:54:11,615 [14] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/project.hbm.xml
+2024-12-03 11:54:11,616 [14] INFO  - Mapping class: Sonance.Models.DataAccess.Project -> projects
+2024-12-03 11:54:11,616 [14] DEBUG - Mapped property: PId -> pid, type: Int64
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: AccountId -> acctid, type: Int64
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: ProjectName -> project_name, type: String
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: ProjectCode -> project_code, type: String
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: ProjectDesc -> project_desc, type: String
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: CreatedOn -> datecreated, type: DateTime
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: Status -> status, type: Int32
+2024-12-03 11:54:11,617 [14] DEBUG - Mapped property: Package_File -> Package_File, type: String
+2024-12-03 11:54:11,618 [14] DEBUG - Mapped property: UserEmail -> user_email, type: String
+2024-12-03 11:54:11,618 [14] DEBUG - Mapped property: Password -> password, type: String
+2024-12-03 11:54:11,618 [14] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/projectconfig.hbm.xml
+2024-12-03 11:54:11,618 [14] INFO  - Mapping class: Sonance.Models.DataAccess.ProjectConfig -> projectconfig
+2024-12-03 11:54:11,618 [14] DEBUG - Mapped property: PSId -> psid, type: Int64
+2024-12-03 11:54:11,619 [14] DEBUG - Mapped property: ProjId -> projid, type: Int64
+2024-12-03 11:54:11,619 [14] DEBUG - Mapped property: HostSettings -> hostsettings, type: String
+2024-12-03 11:54:11,619 [14] DEBUG - Mapped property: Deploymentdetails -> DeploymentDetails, type: String
+2024-12-03 11:54:11,619 [14] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/deployconfig.hbm.xml
+2024-12-03 11:54:11,620 [14] INFO  - Mapping class: Sonance.Models.DataAccess.DeployConfig -> deployconfig
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: DeployId -> DeployId, type: Int64
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: PId -> PId, type: Int64
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: AcctId -> AcctId, type: Int64
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: CloudType -> CloudType, type: String
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: DeployUrl -> DeployUrl, type: String
+2024-12-03 11:54:11,620 [14] DEBUG - Mapped property: DeployPort -> DeployPort, type: String
+2024-12-03 11:54:11,621 [14] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:11,621 [14] INFO  - checking mappings queue
+2024-12-03 11:54:11,621 [14] INFO  - processing one-to-many association mappings
+2024-12-03 11:54:11,621 [14] INFO  - processing one-to-one association property references
+2024-12-03 11:54:11,621 [14] INFO  - processing foreign key constraints
+2024-12-03 11:54:11,621 [14] INFO  - processing filters (second pass)
+2024-12-03 11:54:11,622 [14] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:11,622 [14] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:11,622 [14] INFO  - Using dialect defined converter
+2024-12-03 11:54:11,622 [14] INFO  - Generate SQL with comments: disabled
+2024-12-03 11:54:11,622 [14] INFO  - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:54:11,623 [14] INFO  - Configuring ConnectionProvider
+2024-12-03 11:54:11,623 [14] INFO  - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-12-03 11:54:11,623 [14] INFO  - Optimize cache for minimal puts: False
+2024-12-03 11:54:11,623 [14] INFO  - Connection release mode: auto
+2024-12-03 11:54:11,623 [14] INFO  - Default batch fetch size: 1
+2024-12-03 11:54:11,623 [14] INFO  - echoing all SQL to stdout
+2024-12-03 11:54:11,623 [14] INFO  - Statistics: disabled
+2024-12-03 11:54:11,624 [14] INFO  - Deleted entity synthetic identifier rollback: disabled
+2024-12-03 11:54:11,624 [14] INFO  - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-12-03 11:54:11,624 [14] INFO  - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-12-03 11:54:11,624 [14] INFO  - Query language substitutions: {}
+2024-12-03 11:54:11,624 [14] INFO  - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:54:11,624 [14] INFO  - Order SQL inserts for batching: disabled
+2024-12-03 11:54:11,625 [14] INFO  - Order SQL updates for batching: disabled
+2024-12-03 11:54:11,625 [14] DEBUG - Wrap result sets: disabled
+2024-12-03 11:54:11,625 [14] DEBUG - Batch versioned data: disabled
+2024-12-03 11:54:11,625 [14] INFO  - Batcher factory: NHibernate.AdoNet.NonBatchingBatcherFactory, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:54:11,625 [14] INFO  - Default flush mode: Auto
+2024-12-03 11:54:11,625 [14] INFO  - Named query checking : enabled
+2024-12-03 11:54:11,626 [14] DEBUG - Track session id: enabled
+2024-12-03 11:54:11,626 [14] INFO  - building session factory
+2024-12-03 11:54:11,626 [14] DEBUG - Session factory constructed with filter configurations : {}
+2024-12-03 11:54:11,626 [14] DEBUG - instantiating session factory with properties: {'use_reflection_optimizer'='True', 'connection.provider'='NHibernate.Connection.DriverConnectionProvider', 'connection.driver_class'='NHibernate.Driver.MySqlDataDriver', 'connection.connection_string'='Server=localhost;Database=dc_service;User ID=root;Password=root;', 'dialect'='NHibernate.Dialect.MySQL5Dialect', 'show_sql'='true'}
+2024-12-03 11:54:11,626 [14] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:54:11,627 [14] DEBUG - Closing connection
+2024-12-03 11:54:11,627 [14] DEBUG - registered: 32d03eb03b3e4c0c8560b57fb237d53a(unnamed)
+2024-12-03 11:54:11,627 [14] INFO  - no name configured
+2024-12-03 11:54:11,628 [14] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:11,628 [14] DEBUG - cache for: Sonance.Models.DataAccess.Project usage strategy: read-write
+2024-12-03 11:54:11,628 [14] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:54:11,628 [14] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.Project
+2024-12-03 11:54:11,628 [14] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:11,628 [14] DEBUG - cache for: Sonance.Models.DataAccess.ProjectConfig usage strategy: read-write
+2024-12-03 11:54:11,629 [14] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:11,629 [14] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:11,629 [14] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:11,629 [14] DEBUG - cache for: Sonance.Models.DataAccess.DeployConfig usage strategy: read-write
+2024-12-03 11:54:11,629 [14] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:11,629 [14] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:11,630 [14] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:54:11,630 [14] DEBUG -  Version select: SELECT pid FROM `projects` WHERE pid = ?
+2024-12-03 11:54:11,630 [14] DEBUG -  Snapshot select: SELECT project_.pid, project_.acctid as acctid2_0_, project_.project_name as project3_0_, project_.project_code as project4_0_, project_.project_desc as project5_0_, project_.datecreated as datecreated6_0_, project_.`status` as status7_0_, project_.Package_File as package8_0_, project_.user_email as user9_0_, project_.password as password10_0_ FROM `projects` project_ WHERE project_.pid=?
+2024-12-03 11:54:11,630 [14] DEBUG -  Insert 0: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:54:11,630 [14] DEBUG -  Update 0: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:54:11,630 [14] DEBUG -  Delete 0: DELETE FROM `projects` WHERE pid = ?
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:11,631 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:11,632 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:11,632 [14] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:11,632 [14] DEBUG -  Version select: SELECT psid FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:54:11,632 [14] DEBUG -  Snapshot select: SELECT projectcon_.psid, projectcon_.projid as projid2_1_, projectcon_.hostsettings as hostsettings3_1_, projectcon_.DeploymentDetails as deploymentdetails4_1_ FROM `projectconfig` projectcon_ WHERE projectcon_.psid=?
+2024-12-03 11:54:11,632 [14] DEBUG -  Insert 0: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails, psid) VALUES (?, ?, ?, ?)
+2024-12-03 11:54:11,632 [14] DEBUG -  Update 0: UPDATE `projectconfig` SET projid = ?, hostsettings = ?, DeploymentDetails = ? WHERE psid = ?
+2024-12-03 11:54:11,632 [14] DEBUG -  Delete 0: DELETE FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:54:11,633 [14] DEBUG -  Identity insert: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails) VALUES (?, ?, ?);SELECT LAST_INSERT_ID()
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:11,633 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:11,634 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:11,634 [14] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:11,634 [14] DEBUG -  Version select: SELECT DeployId FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:54:11,634 [14] DEBUG -  Snapshot select: SELECT deployconf_.DeployId, deployconf_.PId as pid2_2_, deployconf_.AcctId as acctid3_2_, deployconf_.CloudType as cloudtype4_2_, deployconf_.DeployUrl as deployurl5_2_, deployconf_.DeployPort as deployport6_2_ FROM `deployconfig` deployconf_ WHERE deployconf_.DeployId=?
+2024-12-03 11:54:11,634 [14] DEBUG -  Insert 0: INSERT INTO `deployconfig` (PId, AcctId, CloudType, DeployUrl, DeployPort, DeployId) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-03 11:54:11,634 [14] DEBUG -  Update 0: UPDATE `deployconfig` SET PId = ?, AcctId = ?, CloudType = ?, DeployUrl = ?, DeployPort = ? WHERE DeployId = ?
+2024-12-03 11:54:11,634 [14] DEBUG -  Delete 0: DELETE FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:11,635 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:11,636 [14] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:11,636 [14] DEBUG - Instantiated session factory
+2024-12-03 11:54:11,636 [14] DEBUG - Checking 0 named HQL queries
+2024-12-03 11:54:11,636 [14] DEBUG - Checking 0 named SQL queries
+2024-12-03 11:54:11,709 [14] INFO  - GetProjectData method started 
+2024-12-03 11:54:11,710 [14] DEBUG - Opening Hibernate Session.
+2024-12-03 11:54:11,710 [14] DEBUG - [session-id=92a333d2-2516-4013-974c-30eac3fa9108] opened session at timestamp: 638688038517, for session factory: [/32d03eb03b3e4c0c8560b57fb237d53a]
+2024-12-03 11:54:11,710 [14] DEBUG - Begin (Unspecified)
+2024-12-03 11:54:11,710 [14] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:54:11,711 [14] INFO  - GetProjectData method started fetching Project Data
+2024-12-03 11:54:11,712 [14] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project]).Where(proj => (proj.PId == 6765)).FirstOrDefault()
+2024-12-03 11:54:11,712 [14] DEBUG - unable to locate HQL query plan in cache; generating (.FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((proj, ) => (Equal(proj.PId, p1<System.Int64>))), ), ))
+2024-12-03 11:54:11,718 [14] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:54:11,718 [14] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.Project (proj) -> project0_
+2024-12-03 11:54:11,718 [14] DEBUG - Resolved :  proj -> project0_.pid
+2024-12-03 11:54:11,718 [14] DEBUG - Resolved :  proj -> project0_.pid
+2024-12-03 11:54:11,718 [14] INFO  - handling property dereference [Sonance.Models.DataAccess.Project (proj) -> PId (Class)]
+2024-12-03 11:54:11,718 [14] DEBUG - getDataType() : PId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:11,718 [14] DEBUG - Resolved :  proj.PId -> project0_.pid
+2024-12-03 11:54:11,719 [14] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:54:11,719 [14] DEBUG - processQuery() : ( SELECT ( {select clause} project0_.pid ) ( FromClause{level=1} `projects` project0_ ) ( where ( == ( project0_.pid project0_.pid PId ) ? ) ) ( take 1 ) )
+2024-12-03 11:54:11,719 [14] DEBUG - Using FROM fragment [`projects` project0_]
+2024-12-03 11:54:11,719 [14] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:54:11,719 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,720 [14] DEBUG - SQL: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=? limit 1
+2024-12-03 11:54:11,720 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,721 [14] DEBUG - located HQL query plan in cache (.FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((proj, ) => (Equal(proj.PId, p1<System.Int64>))), ), ))
+2024-12-03 11:54:11,721 [14] DEBUG - find: .FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((proj, ) => (Equal(proj.PId, p1<System.Int64>))), ), )
+2024-12-03 11:54:11,721 [14] DEBUG - named parameters: {'p1'='6765'}
+2024-12-03 11:54:11,722 [14] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:54:11,722 [14] DEBUG - Building an DbCommand object for the SqlString: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=? limit 1
+2024-12-03 11:54:11,722 [14] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:54:11,722 [14] DEBUG - select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0 limit 1;?p0 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0 limit 1;?p0 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:54:11,722 [14] DEBUG - Enlist Command
+2024-12-03 11:54:11,723 [14] DEBUG - ExecuteReader took 0 ms
+2024-12-03 11:54:11,723 [14] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:54:11,723 [14] DEBUG - processing result set
+2024-12-03 11:54:11,723 [14] DEBUG - result set row: 0
+2024-12-03 11:54:11,723 [14] DEBUG - returning '6765' as column: pid1_0_
+2024-12-03 11:54:11,723 [14] DEBUG - result row: EntityKey[Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,724 [14] DEBUG - Initializing object from DataReader: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,724 [14] DEBUG - Hydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,724 [14] DEBUG - returning '1' as column: acctid2_0_
+2024-12-03 11:54:11,724 [14] DEBUG - returning 'OnlineFoodOrderingSystem' as column: project3_0_
+2024-12-03 11:54:11,724 [14] DEBUG - returning 'dxslmv' as column: project4_0_
+2024-12-03 11:54:11,724 [14] DEBUG - returning null as column: project5_0_
+2024-12-03 11:54:11,724 [14] DEBUG - returning '12/3/2024 11:51:10 AM' as column: datecreated6_0_
+2024-12-03 11:54:11,725 [14] DEBUG - returning '12' as column: status7_0_
+2024-12-03 11:54:11,725 [14] DEBUG - returning 'F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip' as column: package8_0_
+2024-12-03 11:54:11,725 [14] DEBUG - returning 'sahanaprakashan@gmail.com' as column: user9_0_
+2024-12-03 11:54:11,725 [14] DEBUG - returning 'C4WmYpER' as column: password10_0_
+2024-12-03 11:54:11,725 [14] DEBUG - done processing result set (1 rows)
+2024-12-03 11:54:11,725 [14] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:54:11,725 [14] DEBUG - DataReader was closed after 3 ms
+2024-12-03 11:54:11,726 [14] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:54:11,726 [14] DEBUG - total objects hydrated: 1
+2024-12-03 11:54:11,726 [14] DEBUG - resolving associations for [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,726 [14] DEBUG - adding entity to second-level cache: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,726 [14] DEBUG - Caching: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:11,727 [14] DEBUG - Cached: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:11,727 [14] DEBUG - done materializing entity [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:11,727 [14] DEBUG - initializing non-lazy collections
+2024-12-03 11:54:11,729 [14] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig]).Where(proj => (proj.ProjId == 6765)).OrderByDescending(x => x.PSId).FirstOrDefault()
+2024-12-03 11:54:11,729 [14] DEBUG - unable to locate HQL query plan in cache; generating (.FirstOrDefault[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.OrderByDescending[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int64, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e](.Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((proj, ) => (Equal(proj.ProjId, p1<System.Int64>))), ), Quote((x, ) => (x.PSId)), ), ))
+2024-12-03 11:54:11,734 [14] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:54:11,734 [14] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.ProjectConfig (proj) -> projectcon0_
+2024-12-03 11:54:11,734 [14] DEBUG - Resolved :  proj -> projectcon0_.psid
+2024-12-03 11:54:11,734 [14] DEBUG - Resolved :  proj -> projectcon0_.psid
+2024-12-03 11:54:11,734 [14] INFO  - handling property dereference [Sonance.Models.DataAccess.ProjectConfig (proj) -> ProjId (Class)]
+2024-12-03 11:54:11,734 [14] DEBUG - getDataType() : ProjId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:11,735 [14] DEBUG - Resolved :  proj.ProjId -> projectcon0_.projid
+2024-12-03 11:54:11,736 [14] DEBUG - Resolved :  proj -> projectcon0_.psid
+2024-12-03 11:54:11,736 [14] INFO  - handling property dereference [Sonance.Models.DataAccess.ProjectConfig (proj) -> PSId (Class)]
+2024-12-03 11:54:11,736 [14] DEBUG - getDataType() : PSId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:11,736 [14] DEBUG - Resolved :  proj.PSId -> projectcon0_.psid
+2024-12-03 11:54:11,736 [14] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:54:11,737 [14] DEBUG - processQuery() : ( SELECT ( {select clause} projectcon0_.psid ) ( FromClause{level=1} `projectconfig` projectcon0_ ) ( where ( == ( projectcon0_.projid projectcon0_.psid ProjId ) ? ) ) ( order by ( projectcon0_.psid projectcon0_.psid PSId ) desc ) ( take 1 ) )
+2024-12-03 11:54:11,737 [14] DEBUG - Using FROM fragment [`projectconfig` projectcon0_]
+2024-12-03 11:54:11,737 [14] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:54:11,737 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,738 [14] DEBUG - SQL: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=? order by projectcon0_.psid desc limit 1
+2024-12-03 11:54:11,738 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,738 [14] DEBUG - located HQL query plan in cache (.FirstOrDefault[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.OrderByDescending[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int64, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e](.Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((proj, ) => (Equal(proj.ProjId, p1<System.Int64>))), ), Quote((x, ) => (x.PSId)), ), ))
+2024-12-03 11:54:11,738 [14] DEBUG - flushing session
+2024-12-03 11:54:11,738 [14] DEBUG - processing flush-time cascades
+2024-12-03 11:54:11,739 [14] DEBUG - dirty checking collections
+2024-12-03 11:54:11,739 [14] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:54:11,739 [14] DEBUG - Processing unreferenced collections
+2024-12-03 11:54:11,739 [14] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:54:11,739 [14] DEBUG - Flushed: 0 insertions, 0 updates, 0 deletions to 1 objects
+2024-12-03 11:54:11,739 [14] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:54:11,740 [14] DEBUG - listing entities:
+2024-12-03 11:54:11,740 [14] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='OnlineFoodOrderingSystem', 'ProjectCode'='dxslmv', 'ProjectDesc'=null, 'CreatedOn'='12/3/2024 11:51:10 AM', 'Status'='12', 'Package_File'='F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip', 'UserEmail'='sahanaprakashan@gmail.com', 'Password'='C4WmYpER'}
+2024-12-03 11:54:11,741 [14] DEBUG - Dont need to execute flush
+2024-12-03 11:54:11,741 [14] DEBUG - find: .FirstOrDefault[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.OrderByDescending[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int64, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e](.Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((proj, ) => (Equal(proj.ProjId, p1<System.Int64>))), ), Quote((x, ) => (x.PSId)), ), )
+2024-12-03 11:54:11,742 [14] DEBUG - named parameters: {'p1'='6765'}
+2024-12-03 11:54:11,742 [14] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:54:11,742 [14] DEBUG - Building an DbCommand object for the SqlString: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=? order by projectcon0_.psid desc limit 1
+2024-12-03 11:54:11,742 [14] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:54:11,742 [14] DEBUG - select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?p0 order by projectcon0_.psid desc limit 1;?p0 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?p0 order by projectcon0_.psid desc limit 1;?p0 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:54:11,742 [14] DEBUG - Enlist Command
+2024-12-03 11:54:11,744 [14] DEBUG - ExecuteReader took 1 ms
+2024-12-03 11:54:11,744 [14] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:54:11,744 [14] DEBUG - processing result set
+2024-12-03 11:54:11,744 [14] DEBUG - done processing result set (0 rows)
+2024-12-03 11:54:11,744 [14] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:54:11,744 [14] DEBUG - DataReader was closed after 1 ms
+2024-12-03 11:54:11,744 [14] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:54:11,744 [14] DEBUG - total objects hydrated: 0
+2024-12-03 11:54:11,745 [14] DEBUG - initializing non-lazy collections
+2024-12-03 11:54:11,745 [14] INFO  - GetProjectData received with queryOnlineFoodOrderingSystemdxslmv6765
+2024-12-03 11:54:11,746 [14] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig]).Where(p => (p.ProjId == 6765))
+2024-12-03 11:54:11,746 [14] DEBUG - unable to locate HQL query plan in cache; generating (.Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((p, ) => (Equal(p.ProjId, p1<System.Int64>))), ))
+2024-12-03 11:54:11,746 [14] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:54:11,746 [14] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.ProjectConfig (p) -> projectcon0_
+2024-12-03 11:54:11,746 [14] DEBUG - Resolved :  p -> projectcon0_.psid
+2024-12-03 11:54:11,746 [14] DEBUG - Resolved :  p -> projectcon0_.psid
+2024-12-03 11:54:11,747 [14] INFO  - handling property dereference [Sonance.Models.DataAccess.ProjectConfig (p) -> ProjId (Class)]
+2024-12-03 11:54:11,747 [14] DEBUG - getDataType() : ProjId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:11,747 [14] DEBUG - Resolved :  p.ProjId -> projectcon0_.projid
+2024-12-03 11:54:11,747 [14] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:54:11,747 [14] DEBUG - processQuery() : ( SELECT ( {select clause} projectcon0_.psid ) ( FromClause{level=1} `projectconfig` projectcon0_ ) ( where ( == ( projectcon0_.projid projectcon0_.psid ProjId ) ? ) ) )
+2024-12-03 11:54:11,747 [14] DEBUG - Using FROM fragment [`projectconfig` projectcon0_]
+2024-12-03 11:54:11,747 [14] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:54:11,747 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,748 [14] DEBUG - SQL: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?
+2024-12-03 11:54:11,748 [14] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:11,748 [14] DEBUG - located HQL query plan in cache (.Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((p, ) => (Equal(p.ProjId, p1<System.Int64>))), ))
+2024-12-03 11:54:11,748 [14] DEBUG - flushing session
+2024-12-03 11:54:11,748 [14] DEBUG - processing flush-time cascades
+2024-12-03 11:54:11,748 [14] DEBUG - dirty checking collections
+2024-12-03 11:54:11,748 [14] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:54:11,749 [14] DEBUG - Processing unreferenced collections
+2024-12-03 11:54:11,749 [14] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:54:11,749 [14] DEBUG - Flushed: 0 insertions, 0 updates, 0 deletions to 1 objects
+2024-12-03 11:54:11,749 [14] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:54:11,749 [14] DEBUG - listing entities:
+2024-12-03 11:54:11,749 [14] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='OnlineFoodOrderingSystem', 'ProjectCode'='dxslmv', 'ProjectDesc'=null, 'CreatedOn'='12/3/2024 11:51:10 AM', 'Status'='12', 'Package_File'='F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip', 'UserEmail'='sahanaprakashan@gmail.com', 'Password'='C4WmYpER'}
+2024-12-03 11:54:11,749 [14] DEBUG - Dont need to execute flush
+2024-12-03 11:54:11,749 [14] DEBUG - find: .Where[Sonance.Models.DataAccess.ProjectConfig, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.ProjectConfig], Quote((p, ) => (Equal(p.ProjId, p1<System.Int64>))), )
+2024-12-03 11:54:11,750 [14] DEBUG - named parameters: {'p1'='6765'}
+2024-12-03 11:54:11,750 [14] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:54:11,750 [14] DEBUG - Building an DbCommand object for the SqlString: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?
+2024-12-03 11:54:11,750 [14] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:54:11,750 [14] DEBUG - select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: select projectcon0_.psid as psid1_1_, projectcon0_.projid as projid2_1_, projectcon0_.hostsettings as hostsettings3_1_, projectcon0_.DeploymentDetails as deploymentdetails4_1_ from `projectconfig` projectcon0_ where projectcon0_.projid=?p0;?p0 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:54:11,750 [14] DEBUG - Enlist Command
+2024-12-03 11:54:11,751 [14] DEBUG - ExecuteReader took 0 ms
+2024-12-03 11:54:11,751 [14] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:54:11,751 [14] DEBUG - processing result set
+2024-12-03 11:54:11,751 [14] DEBUG - done processing result set (0 rows)
+2024-12-03 11:54:11,751 [14] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:54:11,751 [14] DEBUG - DataReader was closed after 0 ms
+2024-12-03 11:54:11,751 [14] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:54:11,752 [14] DEBUG - total objects hydrated: 0
+2024-12-03 11:54:11,752 [14] DEBUG - initializing non-lazy collections
+2024-12-03 11:54:11,752 [14] DEBUG - Start Commit
+2024-12-03 11:54:11,752 [14] DEBUG - before transaction completion
+2024-12-03 11:54:11,752 [14] DEBUG - flushing session
+2024-12-03 11:54:11,752 [14] DEBUG - processing flush-time cascades
+2024-12-03 11:54:11,752 [14] DEBUG - dirty checking collections
+2024-12-03 11:54:11,753 [14] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:54:11,753 [14] DEBUG - Processing unreferenced collections
+2024-12-03 11:54:11,753 [14] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:54:11,753 [14] DEBUG - Flushed: 0 insertions, 0 updates, 0 deletions to 1 objects
+2024-12-03 11:54:11,753 [14] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:54:11,753 [14] DEBUG - listing entities:
+2024-12-03 11:54:11,753 [14] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='OnlineFoodOrderingSystem', 'ProjectCode'='dxslmv', 'ProjectDesc'=null, 'CreatedOn'='12/3/2024 11:51:10 AM', 'Status'='12', 'Package_File'='F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip', 'UserEmail'='sahanaprakashan@gmail.com', 'Password'='C4WmYpER'}
+2024-12-03 11:54:11,754 [14] DEBUG - executing flush
+2024-12-03 11:54:11,754 [14] DEBUG - Registering flush begin
+2024-12-03 11:54:11,754 [14] DEBUG - Registering flush end
+2024-12-03 11:54:11,754 [14] DEBUG - post flush
+2024-12-03 11:54:11,754 [14] DEBUG - DbTransaction Committed
+2024-12-03 11:54:11,754 [14] DEBUG - Aggressively releasing database connection
+2024-12-03 11:54:11,755 [14] DEBUG - Closing connection
+2024-12-03 11:54:11,755 [14] DEBUG - transaction completion
+2024-12-03 11:54:11,755 [14] DEBUG - DbTransaction disposed.
+2024-12-03 11:54:11,755 [14] DEBUG - closing session
+2024-12-03 11:54:11,755 [14] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:54:11,755 [14] INFO  - Closing
+2024-12-03 11:54:11,755 [14] DEBUG - Disposing of ConnectionProvider.
+2024-12-03 11:54:11,756 [14] DEBUG - [session-id=92a333d2-2516-4013-974c-30eac3fa9108] running ISession.Dispose()
+2024-12-03 11:54:11,756 [14] DEBUG - [session-id=92a333d2-2516-4013-974c-30eac3fa9108] executing real Dispose(True)
+2024-12-03 11:54:12,031 [4] DEBUG - connection.provider=NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:54:12,031 [4] DEBUG - connection.driver_class=NHibernate.Driver.MySqlDataDriver
+2024-12-03 11:54:12,031 [4] DEBUG - connection.connection_string=Server=localhost;Database=dc_service;User ID=root;Password=root;
+2024-12-03 11:54:12,032 [4] DEBUG - dialect=NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:12,032 [4] DEBUG - show_sql=true
+2024-12-03 11:54:12,032 [4] DEBUG - <-Sonance.DataAccess
+2024-12-03 11:54:12,032 [4] INFO  - Searching for mapped documents in assembly: Sonance.DataAccess
+2024-12-03 11:54:12,032 [4] WARN  - No mapped documents found in assembly: Sonance.DataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2024-12-03 11:54:12,032 [4] DEBUG - properties: System.Collections.Generic.Dictionary`2[System.String,System.String]
+2024-12-03 11:54:12,032 [4] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/project.hbm.xml
+2024-12-03 11:54:12,033 [4] INFO  - Mapping class: Sonance.Models.DataAccess.Project -> projects
+2024-12-03 11:54:12,033 [4] DEBUG - Mapped property: PId -> pid, type: Int64
+2024-12-03 11:54:12,033 [4] DEBUG - Mapped property: AccountId -> acctid, type: Int64
+2024-12-03 11:54:12,033 [4] DEBUG - Mapped property: ProjectName -> project_name, type: String
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: ProjectCode -> project_code, type: String
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: ProjectDesc -> project_desc, type: String
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: CreatedOn -> datecreated, type: DateTime
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: Status -> status, type: Int32
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: Package_File -> Package_File, type: String
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: UserEmail -> user_email, type: String
+2024-12-03 11:54:12,034 [4] DEBUG - Mapped property: Password -> password, type: String
+2024-12-03 11:54:12,034 [4] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/projectconfig.hbm.xml
+2024-12-03 11:54:12,035 [4] INFO  - Mapping class: Sonance.Models.DataAccess.ProjectConfig -> projectconfig
+2024-12-03 11:54:12,035 [4] DEBUG - Mapped property: PSId -> psid, type: Int64
+2024-12-03 11:54:12,035 [4] DEBUG - Mapped property: ProjId -> projid, type: Int64
+2024-12-03 11:54:12,035 [4] DEBUG - Mapped property: HostSettings -> hostsettings, type: String
+2024-12-03 11:54:12,035 [4] DEBUG - Mapped property: Deploymentdetails -> DeploymentDetails, type: String
+2024-12-03 11:54:12,035 [4] INFO  - Mapping file: F:\aiscipro-demo\dc.aiscipro.com\/HibernateMapping/deployconfig.hbm.xml
+2024-12-03 11:54:12,036 [4] INFO  - Mapping class: Sonance.Models.DataAccess.DeployConfig -> deployconfig
+2024-12-03 11:54:12,036 [4] DEBUG - Mapped property: DeployId -> DeployId, type: Int64
+2024-12-03 11:54:12,036 [4] DEBUG - Mapped property: PId -> PId, type: Int64
+2024-12-03 11:54:12,036 [4] DEBUG - Mapped property: AcctId -> AcctId, type: Int64
+2024-12-03 11:54:12,037 [4] DEBUG - Mapped property: CloudType -> CloudType, type: String
+2024-12-03 11:54:12,037 [4] DEBUG - Mapped property: DeployUrl -> DeployUrl, type: String
+2024-12-03 11:54:12,037 [4] DEBUG - Mapped property: DeployPort -> DeployPort, type: String
+2024-12-03 11:54:12,037 [4] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:12,037 [4] INFO  - checking mappings queue
+2024-12-03 11:54:12,037 [4] INFO  - processing one-to-many association mappings
+2024-12-03 11:54:12,037 [4] INFO  - processing one-to-one association property references
+2024-12-03 11:54:12,038 [4] INFO  - processing foreign key constraints
+2024-12-03 11:54:12,038 [4] INFO  - processing filters (second pass)
+2024-12-03 11:54:12,038 [4] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:12,038 [4] INFO  - Using dialect: NHibernate.Dialect.MySQL5Dialect
+2024-12-03 11:54:12,039 [4] INFO  - Using dialect defined converter
+2024-12-03 11:54:12,039 [4] INFO  - Generate SQL with comments: disabled
+2024-12-03 11:54:12,039 [4] INFO  - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-12-03 11:54:12,039 [4] INFO  - Configuring ConnectionProvider
+2024-12-03 11:54:12,039 [4] INFO  - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-12-03 11:54:12,039 [4] INFO  - Optimize cache for minimal puts: False
+2024-12-03 11:54:12,040 [4] INFO  - Connection release mode: auto
+2024-12-03 11:54:12,040 [4] INFO  - Default batch fetch size: 1
+2024-12-03 11:54:12,040 [4] INFO  - echoing all SQL to stdout
+2024-12-03 11:54:12,040 [4] INFO  - Statistics: disabled
+2024-12-03 11:54:12,040 [4] INFO  - Deleted entity synthetic identifier rollback: disabled
+2024-12-03 11:54:12,040 [4] INFO  - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-12-03 11:54:12,041 [4] INFO  - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-12-03 11:54:12,041 [4] INFO  - Query language substitutions: {}
+2024-12-03 11:54:12,041 [4] INFO  - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:54:12,041 [4] INFO  - Order SQL inserts for batching: disabled
+2024-12-03 11:54:12,041 [4] INFO  - Order SQL updates for batching: disabled
+2024-12-03 11:54:12,041 [4] DEBUG - Wrap result sets: disabled
+2024-12-03 11:54:12,041 [4] DEBUG - Batch versioned data: disabled
+2024-12-03 11:54:12,041 [4] INFO  - Batcher factory: NHibernate.AdoNet.NonBatchingBatcherFactory, NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-12-03 11:54:12,042 [4] INFO  - Default flush mode: Auto
+2024-12-03 11:54:12,042 [4] INFO  - Named query checking : enabled
+2024-12-03 11:54:12,042 [4] DEBUG - Track session id: enabled
+2024-12-03 11:54:12,042 [4] INFO  - building session factory
+2024-12-03 11:54:12,042 [4] DEBUG - Session factory constructed with filter configurations : {}
+2024-12-03 11:54:12,042 [4] DEBUG - instantiating session factory with properties: {'use_reflection_optimizer'='True', 'connection.provider'='NHibernate.Connection.DriverConnectionProvider', 'connection.driver_class'='NHibernate.Driver.MySqlDataDriver', 'connection.connection_string'='Server=localhost;Database=dc_service;User ID=root;Password=root;', 'dialect'='NHibernate.Dialect.MySQL5Dialect', 'show_sql'='true'}
+2024-12-03 11:54:12,042 [4] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:54:12,043 [4] DEBUG - Closing connection
+2024-12-03 11:54:12,044 [4] DEBUG - registered: 2cf4baf7c2874ce09a2b56d982e58ba4(unnamed)
+2024-12-03 11:54:12,044 [4] INFO  - no name configured
+2024-12-03 11:54:12,044 [4] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:12,044 [4] DEBUG - cache for: Sonance.Models.DataAccess.Project usage strategy: read-write
+2024-12-03 11:54:12,044 [4] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:54:12,044 [4] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.Project
+2024-12-03 11:54:12,045 [4] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:12,045 [4] DEBUG - cache for: Sonance.Models.DataAccess.ProjectConfig usage strategy: read-write
+2024-12-03 11:54:12,045 [4] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:12,045 [4] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:12,045 [4] WARN  - Second-level cache is enabled in a class, but no cache provider was selected. Fake cache used.
+2024-12-03 11:54:12,045 [4] DEBUG - cache for: Sonance.Models.DataAccess.DeployConfig usage strategy: read-write
+2024-12-03 11:54:12,045 [4] DEBUG - No custom accessors found for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:12,046 [4] DEBUG - Create Instantiator using optimizer for:Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:12,046 [4] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.Project
+2024-12-03 11:54:12,046 [4] DEBUG -  Version select: SELECT pid FROM `projects` WHERE pid = ?
+2024-12-03 11:54:12,046 [4] DEBUG -  Snapshot select: SELECT project_.pid, project_.acctid as acctid2_0_, project_.project_name as project3_0_, project_.project_code as project4_0_, project_.project_desc as project5_0_, project_.datecreated as datecreated6_0_, project_.`status` as status7_0_, project_.Package_File as package8_0_, project_.user_email as user9_0_, project_.password as password10_0_ FROM `projects` project_ WHERE project_.pid=?
+2024-12-03 11:54:12,046 [4] DEBUG -  Insert 0: INSERT INTO `projects` (acctid, project_name, project_code, project_desc, datecreated, `status`, Package_File, user_email, password, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2024-12-03 11:54:12,046 [4] DEBUG -  Update 0: UPDATE `projects` SET acctid = ?, project_name = ?, project_code = ?, project_desc = ?, datecreated = ?, `status` = ?, Package_File = ?, user_email = ?, password = ? WHERE pid = ?
+2024-12-03 11:54:12,046 [4] DEBUG -  Delete 0: DELETE FROM `projects` WHERE pid = ?
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=? for update
+2024-12-03 11:54:12,047 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:12,048 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.Project: SELECT project0_.pid as pid1_0_0_, project0_.acctid as acctid2_0_0_, project0_.project_name as project3_0_0_, project0_.project_code as project4_0_0_, project0_.project_desc as project5_0_0_, project0_.datecreated as datecreated6_0_0_, project0_.`status` as status7_0_0_, project0_.Package_File as package8_0_0_, project0_.user_email as user9_0_0_, project0_.password as password10_0_0_ FROM `projects` project0_ WHERE project0_.pid=?
+2024-12-03 11:54:12,048 [4] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.ProjectConfig
+2024-12-03 11:54:12,048 [4] DEBUG -  Version select: SELECT psid FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:54:12,048 [4] DEBUG -  Snapshot select: SELECT projectcon_.psid, projectcon_.projid as projid2_1_, projectcon_.hostsettings as hostsettings3_1_, projectcon_.DeploymentDetails as deploymentdetails4_1_ FROM `projectconfig` projectcon_ WHERE projectcon_.psid=?
+2024-12-03 11:54:12,048 [4] DEBUG -  Insert 0: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails, psid) VALUES (?, ?, ?, ?)
+2024-12-03 11:54:12,048 [4] DEBUG -  Update 0: UPDATE `projectconfig` SET projid = ?, hostsettings = ?, DeploymentDetails = ? WHERE psid = ?
+2024-12-03 11:54:12,048 [4] DEBUG -  Delete 0: DELETE FROM `projectconfig` WHERE psid = ?
+2024-12-03 11:54:12,049 [4] DEBUG -  Identity insert: INSERT INTO `projectconfig` (projid, hostsettings, DeploymentDetails) VALUES (?, ?, ?);SELECT LAST_INSERT_ID()
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=? for update
+2024-12-03 11:54:12,049 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:12,050 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.ProjectConfig: SELECT projectcon0_.psid as psid1_1_0_, projectcon0_.projid as projid2_1_0_, projectcon0_.hostsettings as hostsettings3_1_0_, projectcon0_.DeploymentDetails as deploymentdetails4_1_0_ FROM `projectconfig` projectcon0_ WHERE projectcon0_.psid=?
+2024-12-03 11:54:12,050 [4] DEBUG - Static SQL for entity: Sonance.Models.DataAccess.DeployConfig
+2024-12-03 11:54:12,050 [4] DEBUG -  Version select: SELECT DeployId FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:54:12,050 [4] DEBUG -  Snapshot select: SELECT deployconf_.DeployId, deployconf_.PId as pid2_2_, deployconf_.AcctId as acctid3_2_, deployconf_.CloudType as cloudtype4_2_, deployconf_.DeployUrl as deployurl5_2_, deployconf_.DeployPort as deployport6_2_ FROM `deployconfig` deployconf_ WHERE deployconf_.DeployId=?
+2024-12-03 11:54:12,050 [4] DEBUG -  Insert 0: INSERT INTO `deployconfig` (PId, AcctId, CloudType, DeployUrl, DeployPort, DeployId) VALUES (?, ?, ?, ?, ?, ?)
+2024-12-03 11:54:12,050 [4] DEBUG -  Update 0: UPDATE `deployconfig` SET PId = ?, AcctId = ?, CloudType = ?, DeployUrl = ?, DeployPort = ? WHERE DeployId = ?
+2024-12-03 11:54:12,050 [4] DEBUG -  Delete 0: DELETE FROM `deployconfig` WHERE DeployId = ?
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=? for update
+2024-12-03 11:54:12,051 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+MergeCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:12,052 [4] DEBUG - Static select for action NHibernate.Engine.CascadingAction+RefreshCascadingAction on entity Sonance.Models.DataAccess.DeployConfig: SELECT deployconf0_.DeployId as deployid1_2_0_, deployconf0_.PId as pid2_2_0_, deployconf0_.AcctId as acctid3_2_0_, deployconf0_.CloudType as cloudtype4_2_0_, deployconf0_.DeployUrl as deployurl5_2_0_, deployconf0_.DeployPort as deployport6_2_0_ FROM `deployconfig` deployconf0_ WHERE deployconf0_.DeployId=?
+2024-12-03 11:54:12,052 [4] DEBUG - Instantiated session factory
+2024-12-03 11:54:12,052 [4] DEBUG - Checking 0 named HQL queries
+2024-12-03 11:54:12,052 [4] DEBUG - Checking 0 named SQL queries
+2024-12-03 11:54:12,053 [4] DEBUG - Opening Hibernate Session.
+2024-12-03 11:54:12,053 [4] DEBUG - [session-id=4b0f56b2-3d9f-4bc9-a988-0a2875b86258] opened session at timestamp: 638688038520, for session factory: [/2cf4baf7c2874ce09a2b56d982e58ba4]
+2024-12-03 11:54:12,053 [4] DEBUG - Begin (Unspecified)
+2024-12-03 11:54:12,054 [4] DEBUG - Obtaining DbConnection from Driver
+2024-12-03 11:54:12,055 [4] DEBUG - Expression (partially evaluated): value(NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project]).Where(p => ((p.PId == 6765) AndAlso (p.AccountId == 1))).FirstOrDefault()
+2024-12-03 11:54:12,056 [4] DEBUG - unable to locate HQL query plan in cache; generating (.FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (AndAlso(Equal(p.PId, p1<System.Int64>), Equal(p.AccountId, p2<System.Int64>)))), ), ))
+2024-12-03 11:54:12,057 [4] DEBUG - select << begin [level=1, statement=select]
+2024-12-03 11:54:12,057 [4] DEBUG - FromClause{level=1} :  Sonance.Models.DataAccess.Project (p) -> project0_
+2024-12-03 11:54:12,058 [4] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:54:12,058 [4] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:54:12,058 [4] INFO  - handling property dereference [Sonance.Models.DataAccess.Project (p) -> PId (Class)]
+2024-12-03 11:54:12,058 [4] DEBUG - getDataType() : PId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:12,058 [4] DEBUG - Resolved :  p.PId -> project0_.pid
+2024-12-03 11:54:12,058 [4] DEBUG - Resolved :  p -> project0_.pid
+2024-12-03 11:54:12,058 [4] INFO  - handling property dereference [Sonance.Models.DataAccess.Project (p) -> AccountId (Class)]
+2024-12-03 11:54:12,058 [4] DEBUG - getDataType() : AccountId -> NHibernate.Type.Int64Type
+2024-12-03 11:54:12,059 [4] DEBUG - Resolved :  p.AccountId -> project0_.acctid
+2024-12-03 11:54:12,059 [4] DEBUG - select : finishing up [level=1, statement=select]
+2024-12-03 11:54:12,059 [4] DEBUG - processQuery() : ( SELECT ( {select clause} project0_.pid ) ( FromClause{level=1} `projects` project0_ ) ( where ( and ( == ( project0_.pid project0_.pid PId ) ? ) ( == ( project0_.acctid project0_.pid AccountId ) ? ) ) ) ( take 1 ) )
+2024-12-03 11:54:12,059 [4] DEBUG - Using FROM fragment [`projects` project0_]
+2024-12-03 11:54:12,059 [4] DEBUG - select >> end [level=1, statement=select]
+2024-12-03 11:54:12,059 [4] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:12,060 [4] DEBUG - SQL: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=? and project0_.acctid=? limit 1
+2024-12-03 11:54:12,060 [4] DEBUG - throwQueryException() : no errors
+2024-12-03 11:54:12,060 [4] DEBUG - located HQL query plan in cache (.FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (AndAlso(Equal(p.PId, p1<System.Int64>), Equal(p.AccountId, p2<System.Int64>)))), ), ))
+2024-12-03 11:54:12,060 [4] DEBUG - find: .FirstOrDefault[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](.Where[Sonance.Models.DataAccess.Project, Sonance.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null](NHibernate.Linq.NhQueryable`1[Sonance.Models.DataAccess.Project], Quote((p, ) => (AndAlso(Equal(p.PId, p1<System.Int64>), Equal(p.AccountId, p2<System.Int64>)))), ), )
+2024-12-03 11:54:12,060 [4] DEBUG - named parameters: {'p1'='6765', 'p2'='1'}
+2024-12-03 11:54:12,061 [4] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:54:12,061 [4] DEBUG - Building an DbCommand object for the SqlString: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=? and project0_.acctid=? limit 1
+2024-12-03 11:54:12,061 [4] DEBUG - binding '6765' to parameter: 0
+2024-12-03 11:54:12,061 [4] DEBUG - binding '1' to parameter: 1
+2024-12-03 11:54:12,061 [4] DEBUG - select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0 and project0_.acctid=?p1 limit 1;?p0 = 6765 [Type: Int64 (0:0:0)], ?p1 = 1 [Type: Int64 (0:0:0)]
+NHibernate: select project0_.pid as pid1_0_, project0_.acctid as acctid2_0_, project0_.project_name as project3_0_, project0_.project_code as project4_0_, project0_.project_desc as project5_0_, project0_.datecreated as datecreated6_0_, project0_.`status` as status7_0_, project0_.Package_File as package8_0_, project0_.user_email as user9_0_, project0_.password as password10_0_ from `projects` project0_ where project0_.pid=?p0 and project0_.acctid=?p1 limit 1;?p0 = 6765 [Type: Int64 (0:0:0)], ?p1 = 1 [Type: Int64 (0:0:0)]
+2024-12-03 11:54:12,061 [4] DEBUG - Enlist Command
+2024-12-03 11:54:12,062 [4] DEBUG - ExecuteReader took 0 ms
+2024-12-03 11:54:12,062 [4] DEBUG - Opened DbDataReader, open DbDataReaders: 1
+2024-12-03 11:54:12,062 [4] DEBUG - processing result set
+2024-12-03 11:54:12,062 [4] DEBUG - result set row: 0
+2024-12-03 11:54:12,063 [4] DEBUG - returning '6765' as column: pid1_0_
+2024-12-03 11:54:12,063 [4] DEBUG - result row: EntityKey[Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,063 [4] DEBUG - Initializing object from DataReader: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,063 [4] DEBUG - Hydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,063 [4] DEBUG - returning '1' as column: acctid2_0_
+2024-12-03 11:54:12,063 [4] DEBUG - returning 'OnlineFoodOrderingSystem' as column: project3_0_
+2024-12-03 11:54:12,063 [4] DEBUG - returning 'dxslmv' as column: project4_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning null as column: project5_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning '12/3/2024 11:51:10 AM' as column: datecreated6_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning '12' as column: status7_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning 'F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip' as column: package8_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning 'sahanaprakashan@gmail.com' as column: user9_0_
+2024-12-03 11:54:12,064 [4] DEBUG - returning 'C4WmYpER' as column: password10_0_
+2024-12-03 11:54:12,064 [4] DEBUG - done processing result set (1 rows)
+2024-12-03 11:54:12,064 [4] DEBUG - Closed DbDataReader, open DbDataReaders :0
+2024-12-03 11:54:12,065 [4] DEBUG - DataReader was closed after 3 ms
+2024-12-03 11:54:12,065 [4] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:54:12,065 [4] DEBUG - total objects hydrated: 1
+2024-12-03 11:54:12,065 [4] DEBUG - resolving associations for [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,065 [4] DEBUG - adding entity to second-level cache: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,066 [4] DEBUG - Caching: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:12,066 [4] DEBUG - Cached: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:12,066 [4] DEBUG - done materializing entity [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,066 [4] DEBUG - initializing non-lazy collections
+2024-12-03 11:54:12,067 [4] DEBUG - ignoring persistent instance
+2024-12-03 11:54:12,067 [4] DEBUG - object already associated with session: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,067 [4] DEBUG - Start Commit
+2024-12-03 11:54:12,067 [4] DEBUG - before transaction completion
+2024-12-03 11:54:12,067 [4] DEBUG - flushing session
+2024-12-03 11:54:12,067 [4] DEBUG - processing flush-time cascades
+2024-12-03 11:54:12,067 [4] DEBUG - dirty checking collections
+2024-12-03 11:54:12,067 [4] DEBUG - Flushing entities and processing referenced collections
+2024-12-03 11:54:12,068 [4] DEBUG - Sonance.Models.DataAccess.Project.Status is dirty
+2024-12-03 11:54:12,068 [4] DEBUG - Updating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,069 [4] DEBUG - Processing unreferenced collections
+2024-12-03 11:54:12,069 [4] DEBUG - Scheduling collection removes/(re)creates/updates
+2024-12-03 11:54:12,069 [4] DEBUG - Flushed: 0 insertions, 1 updates, 0 deletions to 1 objects
+2024-12-03 11:54:12,069 [4] DEBUG - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+2024-12-03 11:54:12,069 [4] DEBUG - listing entities:
+2024-12-03 11:54:12,069 [4] DEBUG - Sonance.Models.DataAccess.Project{'PId'='6765', 'AccountId'='1', 'ProjectName'='OnlineFoodOrderingSystem', 'ProjectCode'='dxslmv', 'ProjectDesc'=null, 'CreatedOn'='12/3/2024 11:51:10 AM', 'Status'='17', 'Package_File'='F:\aiscipro-data\products\aiscipro-data-sa\1\6765\package\dxslmv_1.0.zip', 'UserEmail'='sahanaprakashan@gmail.com', 'Password'='C4WmYpER'}
+2024-12-03 11:54:12,069 [4] DEBUG - executing flush
+2024-12-03 11:54:12,069 [4] DEBUG - Registering flush begin
+2024-12-03 11:54:12,071 [4] DEBUG - Invalidating: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:12,071 [4] DEBUG - Updating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,071 [4] DEBUG - Opened new DbCommand, open DbCommands: 1
+2024-12-03 11:54:12,072 [4] DEBUG - Building an DbCommand object for the SqlString: UPDATE `projects` SET `status` = ? WHERE pid = ?
+2024-12-03 11:54:12,072 [4] DEBUG - Dehydrating entity: [Sonance.Models.DataAccess.Project#6765]
+2024-12-03 11:54:12,072 [4] DEBUG - binding '17' to parameter: 0
+2024-12-03 11:54:12,072 [4] DEBUG - binding '6765' to parameter: 1
+2024-12-03 11:54:12,072 [4] DEBUG - UPDATE `projects` SET `status` = ?p0 WHERE pid = ?p1;?p0 = 17 [Type: Int32 (0:0:0)], ?p1 = 6765 [Type: Int64 (0:0:0)]
+NHibernate: UPDATE `projects` SET `status` = ?p0 WHERE pid = ?p1;?p0 = 17 [Type: Int32 (0:0:0)], ?p1 = 6765 [Type: Int64 (0:0:0)]
+2024-12-03 11:54:12,072 [4] DEBUG - Enlist Command
+2024-12-03 11:54:12,073 [4] DEBUG - ExecuteNonQuery took 0 ms
+2024-12-03 11:54:12,073 [4] DEBUG - ExecuteBatch for 1 statements took 0 ms
+2024-12-03 11:54:12,073 [4] DEBUG - Closed DbCommand, open DbCommands: 0
+2024-12-03 11:54:12,073 [4] DEBUG - Registering flush end
+2024-12-03 11:54:12,074 [4] DEBUG - post flush
+2024-12-03 11:54:12,076 [4] DEBUG - DbTransaction Committed
+2024-12-03 11:54:12,076 [4] DEBUG - Aggressively releasing database connection
+2024-12-03 11:54:12,076 [4] DEBUG - Closing connection
+2024-12-03 11:54:12,076 [4] DEBUG - transaction completion
+2024-12-03 11:54:12,077 [4] DEBUG - Releasing: Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:12,077 [4] WARN  - An item was expired by the cache while it was locked (increase your cache timeout): Sonance.Models.DataAccess.Project#6765
+2024-12-03 11:54:12,077 [4] DEBUG - DbTransaction disposed.
+2024-12-03 11:54:12,077 [4] DEBUG - closing session
+2024-12-03 11:54:12,077 [4] DEBUG - running BatcherImpl.Dispose(true)
+2024-12-03 11:54:12,077 [4] INFO  - Closing
+2024-12-03 11:54:12,077 [4] DEBUG - Disposing of ConnectionProvider.
+2024-12-03 11:54:12,077 [4] DEBUG - [session-id=4b0f56b2-3d9f-4bc9-a988-0a2875b86258] running ISession.Dispose()
+2024-12-03 11:54:12,078 [4] DEBUG - [session-id=4b0f56b2-3d9f-4bc9-a988-0a2875b86258] executing real Dispose(True)
+2024-12-03 11:54:12,078 [4] DEBUG - Already closed
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...

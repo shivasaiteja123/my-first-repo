@@ -1,0 +1,33 @@
+{
+  "KafkaSettings": {
+    "Producer": {
+      "BootstrapServers": "localhost:9092"
+    },
+    "Consumer": {
+        "BootstrapServers": "localhost:9092",
+        "GroupId": "test-consumer-group_dc",
+        "Topics": [ "ProjectCreated", "SA_RealeasedProject" ]
+    }
+  },
+  "ProcessTopicsData": [
+    {
+      "Topic": "ProjectCreated",
+      "ClassSettings": {
+        "ServiceName": "Sonance.Gateway.ProjectManagement",
+        "ClassName": "CreateProject",
+        "Method": "CreateProjects",
+        "Parameters": ""
+      }
+    },
+    {
+	"Topic": "SA_RealeasedProject",
+	"ClassSettings": {
+		"ServiceName": "Sonance.Gateway.ProjectManagement",
+		"ClassName": "UpdateProject",
+		"Method": "UpdateProjectStatus",
+		"Parameters": ""
+	}
+    }
+   
+  ]
+}
