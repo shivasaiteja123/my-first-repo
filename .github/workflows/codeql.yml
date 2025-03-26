@@ -1,26 +1,35 @@
-name: "CodeQL Analysis"
+name: CodeQL Analysis
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   analyze:
     name: Analyze code with CodeQL
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up CodeQL
-      uses: github/codeql-action/setup@v2
+      # Set up CodeQL for analysis
+      - name: Set up CodeQL
+        uses: github/codeql-action/setup-codeql@v1
 
-    - name: Analyze code
-      uses: github/codeql-action/analyze@v2
+      # Initialize CodeQL database for supported languages
+      - name: Initialize CodeQL database
+        run: |
+          codeql database create --language=python --language=java --language=javascript --language=go
 
+      # Perform the analysis
+      - name: Perform CodeQL analysis
+        run: |
+          codeql analyze --format=sarif-latest --output=codeql-results.sarif
+
+      # Upload results to GitHub
+      - name: Upload results to GitHub
+        uses: github/codeql-action/upload-results@v1
