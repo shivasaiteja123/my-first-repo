@@ -8,7 +8,6 @@ on:
     branches:
       - master
 
-
 jobs:
   analyze:
     name: Analyze code with CodeQL
@@ -17,15 +16,22 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3  # Using v3 for the latest version
+        uses: actions/checkout@v3  # Latest version for checking out code
 
       # Set up CodeQL for analysis
       - name: Set up CodeQL
-        uses: github/codeql-action/init@v2  # Using v2 as it is the current version
+        uses: github/codeql-action/init@v3  # Update to v3
 
       # Initialize CodeQL database for supported languages
       - name: Initialize CodeQL database
         run: |
           codeql database create --language=python --language=java --language=javascript --language=go
 
-      #
+      # Perform the analysis
+      - name: Perform CodeQL analysis
+        run: |
+          codeql analyze --format=sarif-latest --output=codeql-results.sarif
+
+      # Upload results to GitHub
+      - name: Upload results to GitHub
+        uses: github/codeql-action/upload-results@v3  # Update to v3
