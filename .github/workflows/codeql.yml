@@ -20,7 +20,7 @@ jobs:
 
       # Set up CodeQL for analysis
       - name: Set up CodeQL
-        uses: github/codeql-action/init@v3  # Update to v3
+        uses: github/codeql-action/init@v2  # Update to v2 for compatibility
 
       # Initialize CodeQL database for supported languages
       - name: Initialize CodeQL database
@@ -34,4 +34,4 @@ jobs:
 
       # Upload results to GitHub
       - name: Upload results to GitHub
-        uses: github/codeql-action/upload-results@v3  # Update to v3
+        uses: github/codeql-action/upload-results@v2  # Use v2 instead of v3 for upload-results
