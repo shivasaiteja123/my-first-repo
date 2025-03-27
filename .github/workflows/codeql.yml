@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - master
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   analyze:
@@ -16,11 +17,11 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3  # Latest version for checking out code
+        uses: actions/checkout@v3
 
       # Set up CodeQL for analysis
       - name: Set up CodeQL
-        uses: github/codeql-action/init@v2  # Update to v2 for compatibility
+        uses: github/codeql-action/init@v3
 
       # Initialize CodeQL database for supported languages
       - name: Initialize CodeQL database
@@ -32,6 +33,6 @@ jobs:
         run: |
           codeql analyze --format=sarif-latest --output=codeql-results.sarif
 
-      # Upload results to GitHub
+      # Upload results to GitHub (update to v3)
       - name: Upload results to GitHub
-        uses: github/codeql-action/upload-results@v2  # Use v2 instead of v3 for upload-results
+        uses: github/codeql-action/upload-results@v3
