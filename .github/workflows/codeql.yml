@@ -33,6 +33,6 @@ jobs:
         run: |
           codeql analyze --format=sarif-latest --output=codeql-results.sarif
 
-      # Upload results to GitHub (Corrected version v2)
-      - name: Upload results to GitHub
-        uses: github/codeql-action/upload-results@v2  # Corrected to v2 for upload-results
+      # Upload the results to GitHub (without needing a separate action for upload-results)
+      - name: Upload CodeQL results
+        uses: github/codeql-action/upload-results@v2
