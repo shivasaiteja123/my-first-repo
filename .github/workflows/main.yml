@@ -32,7 +32,7 @@ jobs:
           ./gradlew sonarqube \
             -Dsonar.projectKey=code-review \
             -Dsonar.host.url=http://localhost:9000 \
-            -Dsonar.login=$SONAR_TOKEN || echo "SONAR_FAILED=true" >> $GITHUB_ENV
+             echo "SONAR_FAILED=true" >> $GITHUB_ENV
 
       - name: Notify via Mailgun if SonarQube failed
         if: env.SONAR_FAILED == 'true'
