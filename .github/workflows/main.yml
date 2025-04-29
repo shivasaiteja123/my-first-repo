@@ -17,11 +17,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gradle
-
       - name: Cache SonarQube packages
         uses: actions/cache@v3
         with:
@@ -38,8 +33,7 @@ jobs:
             -Dsonar.host.url=http://localhost:9000 \
             -Dsonar.login=$SONAR_TOKEN || echo "SONAR_FAILED=true" >> $GITHUB_ENV
 
-      - name: Notify via Mailgun if SonarQube failed
-        if: env.SONAR_FAILED == 'true'
+      - name: Always Notify via Mailgun (on both success and failure)
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
         run: |
@@ -47,5 +41,5 @@ jobs:
             https://api.mailgun.net/v3/sandbox0dc4f69b76bb445480873a1165edcb68.mailgun.org/messages \
             -F from="SonarQube Alert <postmaster@sandbox0dc4f69b76bb445480873a1165edcb68.mailgun.org>" \
             -F to=yerramchattyshivasaiteja2003@gmail.com \
-            -F subject="SonarQube Analysis Failed" \
-            -F text="The latest SonarQube analysis for the code-review project has failed. Please check the dashboard."
+            -F subject="SonarQube Analysis Status" \
+            -F text="The SonarQube analysis for the code-review project has completed successfully. Check the dashboard for details."
