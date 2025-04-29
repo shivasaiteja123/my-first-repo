@@ -2,12 +2,11 @@ name: CI with SonarQube and Mailgun
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,6 +16,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Install Gradle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gradle
 
       - name: Cache SonarQube packages
         uses: actions/cache@v3
@@ -32,7 +36,7 @@ jobs:
           ./gradlew sonarqube \
             -Dsonar.projectKey=code-review \
             -Dsonar.host.url=http://localhost:9000 \
-             echo "SONAR_FAILED=true" >> $GITHUB_ENV
+            -Dsonar.login=$SONAR_TOKEN || echo "SONAR_FAILED=true" >> $GITHUB_ENV
 
       - name: Notify via Mailgun if SonarQube failed
         if: env.SONAR_FAILED == 'true'
