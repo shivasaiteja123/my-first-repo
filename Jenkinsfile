@@ -13,12 +13,11 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            environment {
-                SONARQUBE = credentials('code review')
-            }
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    bat "sonar-scanner.bat -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%"
+                withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
+                    withSonarQubeEnv('SonarQube') {
+                        bat '"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%'
+                    }
                 }
             }
         }
@@ -33,25 +32,25 @@ pipeline {
 
         stage('Fetch SonarQube Results') {
             steps {
-                echo 'Fetching SonarQube analysis results...'
+                echo 'Fetching analysis results...'
             }
         }
 
         stage('Email Notification') {
             steps {
-                echo 'Sending email notification...'
+                echo 'Sending email report...'
             }
         }
 
         stage('Archive Reports') {
             steps {
-                echo 'Archiving reports...'
+                echo 'Archiving results...'
             }
         }
 
         stage('Cleanup') {
             steps {
-                echo 'Cleaning up...'
+                echo 'Cleaning up SonarQube project if needed...'
             }
         }
     }
