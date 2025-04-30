@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SONAR_HOST_URL = 'http://localhost:9000'
-        SONAR_AUTH_TOKEN = 'sqa_64083ad40e70ff94ceac7d010ed6db5699df43e7'
+        SONAR_AUTH_TOKEN = credentials('code review')  // Referring to the saved credentials ID 'code review'
         REPO_URL = 'https://github.com/shivasaiteja123/my-first-repo.git'
     }
     stages {
