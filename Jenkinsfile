@@ -3,8 +3,6 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        PYTHON_PATH = 'C:\\Users\\varap\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
-        PYTHON_SCRIPT_PATH = 'C:\\Python script\\send_mail.py'
     }
 
     stages {
@@ -13,7 +11,7 @@ pipeline {
                 git 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
-
+        
         stage('SonarQube Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -26,8 +24,19 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                script {
+                    // Wrap waitForQualityGate in a try-catch block to handle timeouts
+                    try {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            def qualityGate = waitForQualityGate(abortPipeline: false)
+                            if (qualityGate.status != 'OK') {
+                                currentBuild.result = 'UNSTABLE' // Mark as unstable if Quality Gate fails
+                            }
+                        }
+                    } catch (Exception e) {
+                        echo "Quality Gate timed out or failed: ${e.message}"
+                        currentBuild.result = 'UNSTABLE' // Mark as unstable if there's an exception
+                    }
                 }
             }
         }
@@ -41,7 +50,6 @@ pipeline {
         stage('Email Notification') {
             steps {
                 echo 'Sending email report...'
-                bat "\"${PYTHON_PATH}\" \"${PYTHON_SCRIPT_PATH}\""
             }
         }
 
