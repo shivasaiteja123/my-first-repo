@@ -1,68 +1,61 @@
 pipeline {
     agent any
+
     environment {
-        SONAR_HOST_URL = 'http://localhost:9000'
-        SONAR_AUTH_TOKEN = credentials('code review')  // Referring to the saved credentials ID 'code review'
-        REPO_URL = 'https://github.com/shivasaiteja123/my-first-repo.git'
+        SONAR_PROJECT_KEY = 'code-review'
     }
+
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    // Manually checkout the repository
-                    git url: "${REPO_URL}"
-                }
+                git 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
+
         stage('SonarQube Analysis') {
+            environment {
+                SONARQUBE = credentials('code review')
+            }
             steps {
-                script {
-                    withSonarQubeEnv('SonarQube') {
-                        bat '''
-                        C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat -Dsonar.projectKey=code-review -Dsonar.sources=. -Dsonar.token=${SONAR_AUTH_TOKEN}
-                        '''
-                    }
+                withSonarQubeEnv('SonarQube') {
+                    bat "sonar-scanner.bat -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%"
                 }
             }
         }
+
         stage('Quality Gate') {
             steps {
-                timeout(time: 30, unit: 'MINUTES') {
-                    waitForQualityGate(abortPipeline: true)
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
+
         stage('Fetch SonarQube Results') {
             steps {
-                echo 'Fetching SonarQube results'
-                // You could add logic to fetch detailed results from the SonarQube API here.
+                echo 'Fetching SonarQube analysis results...'
             }
         }
+
         stage('Email Notification') {
             steps {
-                echo 'Sending email notification'
-                // Trigger the Python email script here, for example:
-                bat '"C:\\Users\\varap\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" "C:\\Python script\\send_mail.py"'
+                echo 'Sending email notification...'
             }
         }
+
         stage('Archive Reports') {
             steps {
-                echo 'Archiving reports'
-                // Archive SonarQube analysis or build logs here.
+                echo 'Archiving reports...'
             }
         }
+
         stage('Cleanup') {
             steps {
-                echo 'Cleanup'
-                // Clean up workspace or logs if needed
-            }
-        }
-        stage('Post Actions') {
-            steps {
-                echo 'Pipeline completed.'
+                echo 'Cleaning up...'
             }
         }
     }
+
     post {
         failure {
             echo 'Pipeline failed. Please check the logs for errors.'
