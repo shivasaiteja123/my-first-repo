@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
+        PYTHON_PATH = 'C:\\Users\\varap\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
+        PYTHON_SCRIPT_PATH = 'C:\\Python script\\send_mail.py'
     }
 
     stages {
@@ -11,7 +13,7 @@ pipeline {
                 git 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
-        
+
         stage('SonarQube Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -39,6 +41,7 @@ pipeline {
         stage('Email Notification') {
             steps {
                 echo 'Sending email report...'
+                bat "\"${PYTHON_PATH}\" \"${PYTHON_SCRIPT_PATH}\""
             }
         }
 
