@@ -19,7 +19,7 @@ pipeline {
                 script {
                     withSonarQubeEnv('SonarQube') {
                         bat '''
-                        C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat -Dsonar.projectKey=code-review -Dsonar.sources=. -Dsonar.login=${SONAR_AUTH_TOKEN}
+                        C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat -Dsonar.projectKey=code-review -Dsonar.sources=. -Dsonar.token=${SONAR_AUTH_TOKEN}
                         '''
                     }
                 }
