@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
+        PYTHON_PATH = 'C:\\Users\\varap\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
+        PYTHON_SCRIPT_PATH = 'C:\\Python script\\send_mail.py'
     }
 
     stages {
@@ -24,7 +26,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 60, unit: 'MINUTES') {
+                timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
@@ -39,6 +41,7 @@ pipeline {
         stage('Email Notification') {
             steps {
                 echo 'Sending email report...'
+                bat "\"${PYTHON_PATH}\" \"${PYTHON_SCRIPT_PATH}\""
             }
         }
 
