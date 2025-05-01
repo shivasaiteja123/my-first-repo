@@ -3,6 +3,12 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
+        SONAR_HOST_URL = 'http://localhost:9000'  // SonarQube URL
+        SONAR_AUTH_TOKEN = credentials('code-review') // SonarQube Token (from Jenkins credentials)
+        MAILGUN_API_KEY = credentials('MailgunAPI') // Mailgun API Key (from Jenkins credentials)
+        MAILGUN_DOMAIN = credentials('Mailgundomain') // Mailgun Domain (from Jenkins credentials)
+        SENDER_EMAIL = 'saiteja.y@coresonant.com' // Sender email
+        EMAIL_RECIPIENTS = 'yerramchattyshivasaiteja2003@gmail.com' // Recipient email
     }
 
     stages {
@@ -11,7 +17,7 @@ pipeline {
                 git 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
-        
+
         stage('SonarQube Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -25,17 +31,16 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 script {
-                    // Wrap waitForQualityGate in a try-catch block to handle timeouts
                     try {
                         timeout(time: 5, unit: 'MINUTES') {
                             def qualityGate = waitForQualityGate(abortPipeline: false)
                             if (qualityGate.status != 'OK') {
-                                currentBuild.result = 'UNSTABLE' // Mark as unstable if Quality Gate fails
+                                currentBuild.result = 'UNSTABLE' 
                             }
                         }
                     } catch (Exception e) {
                         echo "Quality Gate timed out or failed: ${e.message}"
-                        currentBuild.result = 'UNSTABLE' // Mark as unstable if there's an exception
+                        currentBuild.result = 'UNSTABLE' 
                     }
                 }
             }
@@ -47,9 +52,21 @@ pipeline {
             }
         }
 
-        stage('Email Notification') {
+        stage('Send Email Notification') {
             steps {
-                echo 'Sending email report...'
+                script {
+                    def subject = "Build ${currentBuild.currentResult}: ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                    def body = "Please find the SonarQube analysis report here: ${env.SONAR_HOST_URL}/dashboard?id=${env.SONAR_PROJECT_KEY}"
+
+                    sh """
+                    curl -s --user 'api:${MAILGUN_API_KEY}' \
+                    https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages \
+                    -F from='${SENDER_EMAIL}' \
+                    -F to='${EMAIL_RECIPIENTS}' \
+                    -F subject='${subject}' \
+                    -F text='${body}'
+                    """
+                }
             }
         }
 
