@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
+        SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
     }
 
     stages {
@@ -11,7 +12,7 @@ pipeline {
                 git 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
-     
+
         stage('SonarQube Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -57,13 +58,15 @@ pipeline {
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
                         def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
 
+                        echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
+
                         def sendEmailCommand = """
-                            curl -X POST 'https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages' \
-                            --user 'api:${MAILGUN_API_KEY}' \
-                            -F from='${SENDER_EMAIL}' \
-                            -F to='${recipient}' \
-                            -F subject='${subject}' \
-                            -F text='${body}'
+                            curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" ^
+                            --user "api:${MAILGUN_API_KEY}" ^
+                            -F from="${SENDER_EMAIL}" ^
+                            -F to="${recipient}" ^
+                            -F subject="${subject}" ^
+                            -F text="${body}"
                         """
                         bat sendEmailCommand
                     }
