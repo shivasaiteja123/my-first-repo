@@ -49,8 +49,8 @@ pipeline {
         stage('Email Notification') {
             steps {
                 withCredentials([
-                    string(credentialsId: 'MailgunAPIKey', variable: 'MAILGUN_API_KEY'),
-                    string(credentialsId: 'MailgunDomain', variable: 'MAILGUN_DOMAIN')
+                    string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
+                    string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
                 ]) {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
