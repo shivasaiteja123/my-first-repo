@@ -48,7 +48,12 @@ curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages 
   -F subject="${mailSubject}" ^
   -F text="${mailBody}"
 """
-                            bat 'call sendMail.bat'
+
+                            // Run sendMail.bat safely without failing the pipeline
+                            def status = bat(script: 'call sendMail.bat', returnStatus: true)
+                            if (status != 0) {
+                                echo "Warning: sendMail.bat failed with exit code ${status}, but continuing the pipeline."
+                            }
                         }
                     }
                 }
