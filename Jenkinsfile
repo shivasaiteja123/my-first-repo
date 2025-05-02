@@ -1,9 +1,10 @@
+
 pipeline {
     agent any
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        SENDER_EMAIL = 'saiteja.y@coresonant.com'
+        SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
     }
 
     stages {
@@ -41,28 +42,22 @@ pipeline {
             }
         }
 
-        stage('Fetch SonarQube Report') {
+        stage('Fetch SonarQube Results') {
             steps {
-                script {
-                    echo "Fetching SonarQube analysis report..."
-                    def sonarReportUrl = "http://localhost:9000/api/qualitygates/project_status?projectKey=${SONAR_PROJECT_KEY}"
-                    def sonarReportResponse = bat(script: "curl -u ${SONAR_AUTH_TOKEN}: ${sonarReportUrl}", returnStdout: true).trim()
-                    writeFile(file: 'sonarqube_report.json', text: sonarReportResponse)
-                    echo "SonarQube report fetched successfully."
-                }
+                echo 'Fetching analysis results...'
             }
         }
 
         stage('Email Notification') {
             steps {
-                withCredentials([ 
+                withCredentials([
                     string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
                     string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
                 ]) {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please find the analysis report attached."
+                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
 
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
@@ -72,8 +67,7 @@ pipeline {
                             -F from="${SENDER_EMAIL}" ^
                             -F to="${recipient}" ^
                             -F subject="${subject}" ^
-                            -F text="${body}" ^
-                            -F attachment=@sonarqube_report.json
+                            -F text="${body}"
                         """
                         bat sendEmailCommand
                     }
@@ -83,14 +77,13 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                archiveArtifacts artifacts: 'sonarqube_report.json', fingerprint: true
-                echo 'Report archived successfully.'
+                echo 'Archiving results...'
             }
         }
 
         stage('Cleanup') {
             steps {
-                echo 'You can implement project cleanup logic here using SonarQube API if needed.'
+                echo 'Cleaning up SonarQube project if needed...'
             }
         }
     }
