@@ -44,6 +44,7 @@ pipeline {
         stage('Fetch SonarQube Results') {
             steps {
                 echo 'Fetching analysis results...'
+                // Optionally add logic here to fetch or parse SonarQube API results
             }
         }
 
@@ -80,6 +81,7 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
+                archiveArtifacts artifacts: '**/sonar-report.json', allowEmptyArchive: true
                 echo 'Archiving results...'
             }
         }
@@ -87,6 +89,7 @@ pipeline {
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up SonarQube project if needed...'
+                // Add deletion call to SonarQube API here if desired
             }
         }
     }
