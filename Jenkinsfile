@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
+        SENDER_EMAIL = 'saiteja.y@coresonant.com'
     }
 
     stages {
@@ -45,12 +45,8 @@ pipeline {
             steps {
                 script {
                     echo "Fetching SonarQube analysis report..."
-
-                    // Fetch the JSON report from SonarQube API
                     def sonarReportUrl = "http://localhost:9000/api/qualitygates/project_status?projectKey=${SONAR_PROJECT_KEY}"
                     def sonarReportResponse = bat(script: "curl -u ${SONAR_AUTH_TOKEN}: ${sonarReportUrl}", returnStdout: true).trim()
-
-                    // Optionally, save the report to a file
                     writeFile(file: 'sonarqube_report.json', text: sonarReportResponse)
                     echo "SonarQube report fetched successfully."
                 }
@@ -59,8 +55,10 @@ pipeline {
 
         stage('Email Notification') {
             steps {
-                withCredentials([string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
-                                 string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')]) {
+                withCredentials([
+                    string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
+                    string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
+                ]) {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
@@ -68,7 +66,6 @@ pipeline {
 
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
-                        // Prepare the email and send using Mailgun API
                         def sendEmailCommand = """
                             curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" ^
                             --user "api:${MAILGUN_API_KEY}" ^
@@ -86,13 +83,14 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                echo 'Archiving results...'
+                archiveArtifacts artifacts: 'sonarqube_report.json', fingerprint: true
+                echo 'Report archived successfully.'
             }
         }
 
         stage('Cleanup') {
             steps {
-                echo 'Cleaning up SonarQube project if needed...'
+                echo 'You can implement project cleanup logic here using SonarQube API if needed.'
             }
         }
     }
