@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -57,7 +56,18 @@ pipeline {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
+
+                        def jenkinsBuildUrl = "${env.BUILD_URL}"
+                        def sonarProjectUrl = "http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY}"
+
+                        def body = """The quality gate result is: ${currentBuild.result}.
+
+🔗 Jenkins Build URL:
+${jenkinsBuildUrl}
+
+🔗 SonarQube Project Dashboard:
+${sonarProjectUrl}
+"""
 
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
