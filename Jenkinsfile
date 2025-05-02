@@ -63,7 +63,6 @@ pipeline {
                             The quality gate result is: ${qualityGateStatus}.
                             Please review the analysis report for details.
                         """
-
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
                         def sendEmailCommand = """
@@ -74,6 +73,7 @@ pipeline {
                             -F subject="${subject}" ^
                             -F text="${body}"
                         """
+                        echo "Mailgun API command: ${sendEmailCommand}"
                         bat sendEmailCommand
                     }
                 }
