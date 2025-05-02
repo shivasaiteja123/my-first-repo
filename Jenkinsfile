@@ -83,10 +83,8 @@ pipeline {
 
         stage('Email Notification') {
             steps {
-                withCredentials([
-                    string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
-                    string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
-                ]) {
+                withCredentials([string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
+                                 string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')]) {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
@@ -121,13 +119,15 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                echo 'Archiving results...'
+                // Archiving any reports that you want to keep for later review (e.g., SonarQube report)
+                archiveArtifacts '**/sonar-report.html'
             }
         }
 
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up SonarQube project if needed...'
+                // Add any cleanup actions required for your SonarQube project or workspace
             }
         }
     }
