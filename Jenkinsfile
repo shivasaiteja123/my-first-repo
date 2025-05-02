@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -32,6 +31,8 @@ pipeline {
                             def qualityGate = waitForQualityGate(abortPipeline: false)
                             if (qualityGate.status != 'OK') {
                                 currentBuild.result = 'UNSTABLE'
+                            } else {
+                                currentBuild.result = 'SUCCESS'
                             }
                         }
                     } catch (Exception e) {
@@ -56,8 +57,12 @@ pipeline {
                 ]) {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
+                        def qualityGateStatus = currentBuild.result == 'SUCCESS' ? 'Passed' : 'Failed'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
+                        def body = """
+                            The quality gate result is: ${qualityGateStatus}.
+                            Please review the analysis report for details.
+                        """
 
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
