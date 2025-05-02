@@ -37,10 +37,11 @@ pipeline {
                         ]) {
                             def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                             def mailSubject = "SonarQube Analysis: Build ${currentBuild.result}"
-                            def mailBody = """Quality Gate Result: ${gateStatus}.
-View the report: http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY}
-View Jenkins: ${env.BUILD_URL}"""
-
+                            def mailBody = """\
+Quality Gate Result: ${gateStatus}.
+SonarQube Report: [View Report](http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY})
+Jenkins Build: [View Build]( ${env.BUILD_URL})
+"""
                             writeFile file: 'sendMail.bat', text: """
 curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^
   -F from="${SENDER_EMAIL}" ^
