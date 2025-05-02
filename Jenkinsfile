@@ -1,43 +1,35 @@
-
 pipeline {
     agent any
 
     environment {
-        SONAR_PROJECT_KEY = 'code-review'
-        SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
+        SONARQUBE_TOKEN = credentials('sqa_64083ad40e70ff94ceac7d010ed6db5699df43e7')
+        SONARQUBE_PROJECT_KEY = 'code-review'
+        MAILGUN_API_KEY = credentials('2ce6a04c021ad1d678ec39b531e1e929-3d4b3a2a-4eff30ae')
+        MAILGUN_DOMAIN = 'sandbox0dc4f69b76bb445480873a1165edcb68.mailgun.org' // Replace with your Mailgun domain
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/shivasaiteja123/my-first-repo.git'
+                git url: 'https://github.com/shivasaiteja123/my-first-repo.git'
             }
         }
 
         stage('SonarQube Analysis') {
+            environment {
+                SONAR_TOKEN = "${env.SONARQUBE_TOKEN}"
+            }
             steps {
-                withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
-                    withSonarQubeEnv('SonarQube') {
-                        bat '"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%'
-                    }
+                withSonarQubeEnv('SonarQube') {
+                    bat "\"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} -Dsonar.sources=. -Dsonar.token=${SONAR_TOKEN}"
                 }
             }
         }
 
         stage('Quality Gate') {
             steps {
-                script {
-                    try {
-                        timeout(time: 5, unit: 'MINUTES') {
-                            def qualityGate = waitForQualityGate(abortPipeline: false)
-                            if (qualityGate.status != 'OK') {
-                                currentBuild.result = 'UNSTABLE'
-                            }
-                        }
-                    } catch (Exception e) {
-                        echo "Quality Gate timed out or failed: ${e.message}"
-                        currentBuild.result = 'UNSTABLE'
-                    }
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
@@ -45,52 +37,39 @@ pipeline {
         stage('Fetch SonarQube Results') {
             steps {
                 echo 'Fetching analysis results...'
+                // You could add logic here to fetch metrics if needed.
             }
         }
 
         stage('Email Notification') {
             steps {
-                withCredentials([
-                    string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
-                    string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
-                ]) {
+                withCredentials([string(credentialsId: 'mailgun-api-key', variable: 'MAILGUN_API_KEY')]) {
                     script {
-                        def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
-                        def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
-
-                        echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
-
-                        def sendEmailCommand = """
-                            curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" ^
-                            --user "api:${MAILGUN_API_KEY}" ^
-                            -F from="${SENDER_EMAIL}" ^
-                            -F to="${recipient}" ^
-                            -F subject="${subject}" ^
-                            -F text="${body}"
-                        """
-                        bat sendEmailCommand
+                        def subject = "SonarQube Quality Gate: PASSED"
+                        def body = "The project *${SONARQUBE_PROJECT_KEY}* has passed the quality gate. Visit: http://localhost:9000/dashboard?id=${SONARQUBE_PROJECT_KEY}"
+                        def response = httpRequest(
+                            httpMode: 'POST',
+                            url: "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages",
+                            authentication: 'mailgun-api-key',
+                            contentType: 'APPLICATION_FORM',
+                            requestBody: "from=Jenkins CI <jenkins@${MAILGUN_DOMAIN}>&to=youremail@example.com&subject=${subject}&text=${body}"
+                        )
+                        echo "Email sent: ${response.status}"
                     }
                 }
             }
         }
 
-        stage('Archive Reports') {
+        stage('Archive Report') {
             steps {
-                echo 'Archiving results...'
+                archiveArtifacts artifacts: '**/.scannerwork/**', allowEmptyArchive: true
             }
         }
 
-        stage('Cleanup') {
+        stage('Cleanup SonarQube') {
             steps {
-                echo 'Cleaning up SonarQube project if needed...'
+                echo "Cleanup steps can be defined here if needed (e.g., deleting project via API)."
             }
-        }
-    }
-
-    post {
-        failure {
-            echo 'Pipeline failed. Please check the logs for errors.'
         }
     }
 }
