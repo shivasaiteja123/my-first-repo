@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_ENV = credentials('code review')
-        SONAR_AUTH_TOKEN = credentials('sonar-token')
-        MAILGUN_API_KEY = credentials('mailgun-api-key')
+        SONAR_PROJECT_KEY = 'code-review'
+        SENDER_EMAIL = 'saiteja.y@coresonant.com'
     }
 
     stages {
@@ -16,9 +15,9 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_AUTH_TOKEN')]) {
+                withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
-                        bat "\"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=code-review -Dsonar.sources=. -Dsonar.token=${SONAR_AUTH_TOKEN}"
+                        bat '"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%'
                     }
                 }
             }
@@ -26,71 +25,52 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                script {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
+                timeout(time: 5, unit: 'MINUTES') {
+                    script {
+                        def qg = waitForQualityGate(abortPipeline: false)
+                        def gateStatus = (qg.status == 'OK') ? 'Passed' : 'Failed'
+                        currentBuild.result = (qg.status == 'OK') ? 'SUCCESS' : 'UNSTABLE'
+
+                        withCredentials([
+                            string(credentialsId: 'MailgunAPI', variable: 'MG_API'),
+                            string(credentialsId: 'Mailgundomain', variable: 'MG_DOMAIN')
+                        ]) {
+                            def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
+                            def mailSubject = "SonarQube Analysis: Build ${currentBuild.result}"
+                            def mailBody = """Quality Gate Result: ${gateStatus}.
+View the report: http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY}
+View Jenkins: ${env.BUILD_URL}"""
+
+                            writeFile file: 'sendMail.bat', text: """
+curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^
+  -F from="${SENDER_EMAIL}" ^
+  -F to="${recipient}" ^
+  -F subject="${mailSubject}" ^
+  -F text="${mailBody}"
+"""
+                            bat 'call sendMail.bat'
+                        }
                     }
                 }
             }
         }
 
-        stage('Fetch SonarQube Results') {
+        stage('Archive Reports') {
             steps {
-                echo 'Fetching analysis results...'
-                script {
-                    def response = httpRequest(
-                        url: 'http://localhost:9000/api/measures/component?component=code-review&metricKeys=bugs,vulnerabilities,code_smells,coverage',
-                        httpMode: 'GET',
-                        customHeaders: [[name: 'Authorization', value: "Basic ${SONAR_AUTH_TOKEN.bytes.encodeBase64().toString()}"]],
-                        validResponseCodes: '200'
-                    )
-                    writeFile file: 'sonar-results.json', text: response.content
-                }
+                echo 'Archiving results...'
             }
         }
 
-        stage('Send Email Notification') {
+        stage('Cleanup') {
             steps {
-                script {
-                    def results = readJSON file: 'sonar-results.json'
-                    def measures = results.component.measures.collect { "${it.metric}: ${it.value}" }.join('<br>')
-                    def subject = "SonarQube Analysis Report for code-review"
-                    def body = """
-                    <h3>SonarQube Analysis Results:</h3>
-                    <p>${measures}</p>
-                    <p>Dashboard: <a href="http://localhost:9000/dashboard?id=code-review">View Here</a></p>
-                    """
-
-                    sh """
-                    curl -s --user "api:${MAILGUN_API_KEY}" \\
-                        https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages \\
-                        -F from="CI Pipeline <mailgun@YOUR_DOMAIN_NAME>" \\
-                        -F to="you@example.com" \\
-                        -F subject="${subject}" \\
-                        -F html="${body}"
-                    """
-                }
+                echo 'Cleaning up...'
             }
         }
+    }
 
-        stage('Archive Report') {
-            steps {
-                archiveArtifacts artifacts: 'sonar-results.json', onlyIfSuccessful: true
-            }
-        }
-
-        stage('Clean Up SonarQube') {
-            steps {
-                echo 'Cleaning up project from SonarQube...'
-                script {
-                    httpRequest(
-                        url: 'http://localhost:9000/api/projects/delete?project=code-review',
-                        httpMode: 'POST',
-                        customHeaders: [[name: 'Authorization', value: "Basic ${SONAR_AUTH_TOKEN.bytes.encodeBase64().toString()}"]],
-                        validResponseCodes: '200'
-                    )
-                }
-            }
+    post {
+        failure {
+            echo 'Pipeline failed. Check the logs for details.'
         }
     }
 }
