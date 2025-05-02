@@ -55,7 +55,7 @@ pipeline {
 
         stage('Email Notification') {
             steps {
-                withCredentials([
+                withCredentials([ 
                     string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
                     string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
                 ]) {
