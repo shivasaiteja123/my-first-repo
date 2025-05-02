@@ -32,7 +32,7 @@ pipeline {
                         def gateStatus = (qg.status == 'OK') ? 'Passed' : 'Failed'
                         currentBuild.result = (qg.status == 'OK') ? 'SUCCESS' : 'UNSTABLE'
 
-                        withCredentials([
+                        withCredentials([ 
                             string(credentialsId: 'MailgunAPI', variable: 'MG_API'),
                             string(credentialsId: 'Mailgundomain', variable: 'MG_DOMAIN')
                         ]) {
@@ -49,12 +49,13 @@ SonarQube Report: ${sonarQubeUrl}
 Jenkins Build: ${jenkinsUrl}
 """
 
+                            // Write the sendMail.bat file with properly escaped variables
                             writeFile file: 'sendMail.bat', text: """
-curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^
+curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^ 
   -F from="${SENDER_EMAIL}" ^ 
   -F to="${recipient}" ^ 
   -F subject="${mailSubject}" ^ 
-  -F text="${mailBody}"
+  -F text="${mailBody.replaceAll("\\n", "%0A")}"
 """
 
                             def status = bat(script: 'call sendMail.bat', returnStatus: true)
