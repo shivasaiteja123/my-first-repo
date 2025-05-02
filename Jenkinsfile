@@ -25,7 +25,7 @@ pipeline {
                             "C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" 
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} 
                             -Dsonar.sources=. 
-                            -Dsonar.token=${SONAR_AUTH_TOKEN}
+                            -Dsonar.token=${SONAR_AUTH_TOKEN} 
                         """
                     }
                 }
