@@ -43,8 +43,14 @@ pipeline {
 
         stage('Fetch SonarQube Results') {
             steps {
-                echo 'Fetching analysis results...'
-                // Optionally add logic here to fetch or parse SonarQube API results
+                withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
+                    script {
+                        def apiUrl = "http://localhost:9000/api/qualitygates/project_status?projectKey=${SONAR_PROJECT_KEY}"
+                        def curlCommand = "curl -u ${SONAR_AUTH_TOKEN}: ${apiUrl} -o quality-gate.json"
+                        bat curlCommand
+                        archiveArtifacts artifacts: 'quality-gate.json', allowEmptyArchive: true
+                    }
+                }
             }
         }
 
@@ -63,12 +69,7 @@ pipeline {
 
                         try {
                             def sendEmailCommand = """
-                                curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" ^
-                                --user "api:${MAILGUN_API_KEY}" ^
-                                -F from="${SENDER_EMAIL}" ^
-                                -F to="${recipient}" ^
-                                -F subject="${subject}" ^
-                                -F text="${body}"
+                                curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" --user "api:${MAILGUN_API_KEY}" -F from="${SENDER_EMAIL}" -F to="${recipient}" -F subject="${subject}" -F text="${body}"
                             """
                             bat sendEmailCommand
                         } catch (Exception e) {
@@ -81,7 +82,7 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                archiveArtifacts artifacts: '**/sonar-report.json', allowEmptyArchive: true
+                archiveArtifacts artifacts: '**/.scannerwork/report-task.txt', allowEmptyArchive: true
                 echo 'Archiving results...'
             }
         }
