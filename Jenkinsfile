@@ -17,7 +17,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
-                        bat '"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%'
+                        // Corrected to use Groovy environment variable syntax
+                        bat "\"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.token=${SONAR_AUTH_TOKEN}"
                     }
                 }
             }
@@ -38,7 +39,7 @@ pipeline {
                             def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                             def mailSubject = "SonarQube Analysis: Build ${currentBuild.result}"
 
-                            // Update these two URLs with your current Ngrok links
+                            // Replace with actual Ngrok URLs
                             def sonarQubeUrl = "https://your-ngrok-sonarqube-url.ngrok-free.app/dashboard?id=${SONAR_PROJECT_KEY}"
                             def jenkinsUrl = "https://2fe7-183-82-120-202.ngrok-free.app/job/Jenkinsfile/"
 
