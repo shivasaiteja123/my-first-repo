@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
+        SENDER_EMAIL = 'saiteja.y@coresonant.com'
     }
 
     stages {
@@ -59,22 +59,20 @@ pipeline {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def qualityGateStatus = currentBuild.result == 'SUCCESS' ? 'Passed' : 'Failed'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = """
-                            The quality gate result is: ${qualityGateStatus}.
-                            Please review the analysis report for details.
-                        """
-                        echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
+                        def sonarLink = "http://localhost:9000/dashboard?id=code-review"
+                        def body = "The quality gate result is: ${qualityGateStatus}.\n\nView report: ${sonarLink}"
 
-                        def sendEmailCommand = """
-                            curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" ^
-                            --user "api:${MAILGUN_API_KEY}" ^
-                            -F from="${SENDER_EMAIL}" ^
-                            -F to="${recipient}" ^
-                            -F subject="${subject}" ^
-                            -F text="${body}"
+                        def curlCmd = """
+                        curl -X POST "https://api.mailgun.net/v3/%MAILGUN_DOMAIN%/messages" ^
+                        --user "api:%MAILGUN_API_KEY%" ^
+                        -F from="${SENDER_EMAIL}" ^
+                        -F to="${recipient}" ^
+                        -F subject="${subject}" ^
+                        -F text="${body}"
                         """
-                        echo "Mailgun API command: ${sendEmailCommand}"
-                        bat sendEmailCommand
+
+                        writeFile file: 'sendMail.bat', text: curlCmd
+                        bat 'sendMail.bat'
                     }
                 }
             }
