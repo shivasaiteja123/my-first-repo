@@ -37,20 +37,25 @@ pipeline {
                         ]) {
                             def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                             def mailSubject = "SonarQube Analysis: Build ${currentBuild.result}"
+
+                            // Update these two URLs with your current Ngrok links
+                            def sonarQubeUrl = "https://your-ngrok-sonarqube-url.ngrok-free.app/dashboard?id=${SONAR_PROJECT_KEY}"
+                            def jenkinsUrl = "https://2fe7-183-82-120-202.ngrok-free.app/job/Jenkinsfile/"
+
                             def mailBody = """\
 Quality Gate Result: ${gateStatus}.
-SonarQube Report: [View Report](http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY})
-Jenkins Build: [View Build]( ${env.BUILD_URL})
+SonarQube Report: ${sonarQubeUrl}
+Jenkins Build: ${jenkinsUrl}
 """
+
                             writeFile file: 'sendMail.bat', text: """
 curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^
-  -F from="${SENDER_EMAIL}" ^
-  -F to="${recipient}" ^
-  -F subject="${mailSubject}" ^
+  -F from="${SENDER_EMAIL}" ^ 
+  -F to="${recipient}" ^ 
+  -F subject="${mailSubject}" ^ 
   -F text="${mailBody}"
 """
 
-                            // Run sendMail.bat safely without failing the pipeline
                             def status = bat(script: 'call sendMail.bat', returnStatus: true)
                             if (status != 0) {
                                 echo "Warning: sendMail.bat failed with exit code ${status}, but continuing the pipeline."
