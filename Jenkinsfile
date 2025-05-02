@@ -17,6 +17,10 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
+                        // Debugging: Print SONAR_PROJECT_KEY value
+                        echo "SonarQube Project Key: ${SONAR_PROJECT_KEY}"
+                        
+                        // Run SonarScanner with correct project key and token
                         bat """
                             "C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" 
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} 
@@ -43,7 +47,7 @@ pipeline {
                             def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                             def mailSubject = "SonarQube Analysis: Build ${currentBuild.result}"
 
-                            // Update this with your actual Ngrok URLs
+                            // Replace with actual Ngrok URLs
                             def sonarQubeUrl = "https://your-ngrok-sonarqube-url.ngrok-free.app/dashboard?id=${SONAR_PROJECT_KEY}"
                             def jenkinsUrl = "https://2fe7-183-82-120-202.ngrok-free.app/job/Jenkinsfile/"
 
@@ -53,16 +57,15 @@ SonarQube Report: ${sonarQubeUrl}
 Jenkins Build: ${jenkinsUrl}
 """
 
-                            // Generate the batch script to send an email via Mailgun
+                            // Write the sendMail.bat file with properly escaped variables
                             writeFile file: 'sendMail.bat', text: """
-curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^
-  -F from="${SENDER_EMAIL}" ^
-  -F to="${recipient}" ^
-  -F subject="${mailSubject}" ^
+curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages ^ 
+  -F from="${SENDER_EMAIL}" ^ 
+  -F to="${recipient}" ^ 
+  -F subject="${mailSubject}" ^ 
   -F text="${mailBody.replaceAll("\\n", "%0A")}"
 """
 
-                            // Execute the batch script to send the email
                             def status = bat(script: 'call sendMail.bat', returnStatus: true)
                             if (status != 0) {
                                 echo "Warning: sendMail.bat failed with exit code ${status}, but continuing the pipeline."
@@ -76,14 +79,12 @@ curl -s --user "api:${MG_API}" https://api.mailgun.net/v3/${MG_DOMAIN}/messages 
         stage('Archive Reports') {
             steps {
                 echo 'Archiving results...'
-                // Add additional archiving commands as necessary
             }
         }
 
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up...'
-                // Add cleanup commands as necessary
             }
         }
     }
