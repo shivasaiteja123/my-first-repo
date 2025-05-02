@@ -4,6 +4,7 @@ pipeline {
     environment {
         SONAR_PROJECT_KEY = 'code-review'
         SENDER_EMAIL = 'saiteja.y@coresonant.com' // 🔁 Replace with your verified Mailgun sender email
+        SONAR_HOST_URL = 'http://localhost:9000' // Update with your SonarQube instance URL
     }
 
     stages {
@@ -43,7 +44,40 @@ pipeline {
 
         stage('Fetch SonarQube Results') {
             steps {
-                echo 'Fetching analysis results...'
+                script {
+                    echo 'Fetching SonarQube analysis results...'
+                    // Make a REST API call to SonarQube to get the analysis details
+                    def sonarApiUrl = "${SONAR_HOST_URL}/api/issues/search?componentKeys=${SONAR_PROJECT_KEY}&resolved=false"
+                    def jsonResponse = sh(script: """
+                        curl -s -u ${SONAR_AUTH_TOKEN}: ${sonarApiUrl}
+                    """, returnStdout: true).trim()
+                    
+                    def json = readJSON text: jsonResponse
+                    def bugs = json.issues.count { it.type == 'BUG' }
+                    def vulnerabilities = json.issues.count { it.type == 'VULNERABILITY' }
+                    def codeSmells = json.issues.count { it.type == 'CODE_SMELL' }
+
+                    // Fetch coverage data
+                    def coverageData = sh(script: """
+                        curl -s -u ${SONAR_AUTH_TOKEN}: ${SONAR_HOST_URL}/api/measures/component?component=${SONAR_PROJECT_KEY}&metricKeys=coverage
+                    """, returnStdout: true).trim()
+                    def coverageJson = readJSON text: coverageData
+                    def coverage = coverageJson.component.measures[0].value
+
+                    // Fetch duplicated lines
+                    def duplicationData = sh(script: """
+                        curl -s -u ${SONAR_AUTH_TOKEN}: ${SONAR_HOST_URL}/api/measures/component?component=${SONAR_PROJECT_KEY}&metricKeys=duplicated_lines_density
+                    """, returnStdout: true).trim()
+                    def duplicationJson = readJSON text: duplicationData
+                    def duplicatedCode = duplicationJson.component.measures[0].value
+
+                    // Set environment variables for email
+                    env.BUGS = bugs
+                    env.VULNERABILITIES = vulnerabilities
+                    env.CODE_SMELLS = codeSmells
+                    env.COVERAGE = coverage
+                    env.DUPLICATED_CODE = duplicatedCode
+                }
             }
         }
 
@@ -56,7 +90,18 @@ pipeline {
                     script {
                         def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
                         def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
+
+                        // Create the email body with detailed analysis information
+                        def body = """
+                            The quality gate result is: ${currentBuild.result}.
+                            Bugs: ${env.BUGS}
+                            Vulnerabilities: ${env.VULNERABILITIES}
+                            Code Smells: ${env.CODE_SMELLS}
+                            Coverage: ${env.COVERAGE}%
+                            Duplicated Code: ${env.DUPLICATED_CODE}%
+                            
+                            Please review the analysis report in SonarQube for further details.
+                        """
 
                         echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
 
