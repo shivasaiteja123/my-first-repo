@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        PYTHON_PATH = 'C:\\Users\\varap\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
-        PYTHON_SCRIPT_PATH = 'C:\\Python script\\send_mail.py'
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
-                        bat '"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%'
+                        bat "\"C:\\SonarScanner\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=%SONAR_PROJECT_KEY% -Dsonar.sources=. -Dsonar.token=%SONAR_AUTH_TOKEN%"
                     }
                 }
             }
@@ -26,27 +26,35 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+
                 }
             }
         }
 
         stage('Fetch SonarQube Results') {
             steps {
-                echo 'Fetching analysis results...'
+                withCredentials([string(credentialsId: 'code review', variable: 'SONAR_AUTH_TOKEN')]) {
+                    script {
+                        def apiUrl = "http://localhost:9000/api/qualitygates/project_status?projectKey=${SONAR_PROJECT_KEY}"
+                        def curlCommand = "curl -u ${SONAR_AUTH_TOKEN}: ${apiUrl} -o quality-gate.json"
+                        bat curlCommand
+                        archiveArtifacts artifacts: 'quality-gate.json', allowEmptyArchive: true
+                    }
+                }
             }
         }
 
         stage('Email Notification') {
             steps {
-                echo 'Sending email report...'
-                bat "\"${PYTHON_PATH}\" \"${PYTHON_SCRIPT_PATH}\""
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+
             }
         }
 
         stage('Archive Reports') {
             steps {
+                archiveArtifacts artifacts: '**/.scannerwork/report-task.txt', allowEmptyArchive: true
                 echo 'Archiving results...'
             }
         }
@@ -54,6 +62,7 @@ pipeline {
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up SonarQube project if needed...'
+                // Add deletion call to SonarQube API here if desired
             }
         }
     }
