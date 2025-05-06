@@ -1,20 +1,20 @@
+# 📁 .github/workflows/code-review.yml
+
 name: Code Review GPT
 
 on:
   pull_request:
-    branches:
-      - master
-    types: [opened, reopened, synchronize]
+    types: [opened, synchronize]  # Triggers on new or updated PRs
 
 jobs:
   run_code_review:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
+    steps:
+      # ✅ This checks out the repository code into the GitHub runner
+      - uses: actions/checkout@v4
+
+      # ✅ This runs the GPT-based code review action
       - name: Run Code Review GPT
         uses: mattzcarey/code-review-gpt@v0.8.0
         with:
