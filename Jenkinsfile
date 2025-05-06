@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'code-review'
-        SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+
     }
 
     stages {
@@ -25,18 +26,8 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                script {
-                    try {
-                        timeout(time: 5, unit: 'MINUTES') {
-                            def qualityGate = waitForQualityGate(abortPipeline: false)
-                            if (qualityGate.status != 'OK') {
-                                currentBuild.result = 'UNSTABLE'
-                            }
-                        }
-                    } catch (Exception e) {
-                        echo "Quality Gate timed out or failed: ${e.message}"
-                        currentBuild.result = 'UNSTABLE'
-                    }
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
+
                 }
             }
         }
@@ -56,27 +47,8 @@ pipeline {
 
         stage('Email Notification') {
             steps {
-                withCredentials([
-                    string(credentialsId: 'MailgunAPI', variable: 'MAILGUN_API_KEY'),
-                    string(credentialsId: 'Mailgundomain', variable: 'MAILGUN_DOMAIN')
-                ]) {
-                    script {
-                        def recipient = 'yerramchattyshivasaiteja2003@gmail.com'
-                        def subject = "SonarQube Analysis: Build ${currentBuild.result}"
-                        def body = "The quality gate result is: ${currentBuild.result}. Please review the analysis report."
+SENDER_EMAIL = 'saiteja.y@coresonant.com' // Replace with your verified Mailgun sender email
 
-                        echo "Sending email to ${recipient} via domain ${MAILGUN_DOMAIN}"
-
-                        try {
-                            def sendEmailCommand = """
-                                curl -X POST "https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages" --user "api:${MAILGUN_API_KEY}" -F from="${SENDER_EMAIL}" -F to="${recipient}" -F subject="${subject}" -F text="${body}"
-                            """
-                            bat sendEmailCommand
-                        } catch (Exception e) {
-                            echo "Failed to send email: ${e.message}"
-                        }
-                    }
-                }
             }
         }
 
